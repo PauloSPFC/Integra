@@ -59,7 +59,5 @@ public class Visita {
 	public String toString() {
 		return "Visita [monitor=" + monitor + ", professor=" + professor + ", cod_trajeto=" + cod_trajeto
 				+ ", data_visita=" + data_visita + ", horario_visita=" + horario_visita + "]";
-	}
-	
-	
+	}	
 }

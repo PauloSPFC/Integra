@@ -63,9 +63,5 @@ public class Professor {
 		return "Professor [cpf=" + cpf + ", nome=" + nome + ", matricula_escola=" + matricula_escola + ", tel=" + tel
 				+ "]";
 	}
-
-	public void add(Professor professor) {
-		
-	}
 		
 }

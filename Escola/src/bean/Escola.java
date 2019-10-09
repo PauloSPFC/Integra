@@ -1,4 +1,5 @@
 package bean;
+
 public class Escola {
 	private int matricula;
 	private String nome;
@@ -16,10 +17,6 @@ public class Escola {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.tel = tel;
-	}
-
-	public Escola() {
-		
 	}
 
 	public int getMatricula() {
@@ -82,10 +79,6 @@ public class Escola {
 	public String toString() {
 		return "Escola [matricula=" + matricula + ", nome=" + nome + ", rua=" + rua + ", nro=" + nro + ", bairro="
 				+ bairro + ", cidade=" + cidade + ", tel=" + tel + "]";
-	}
-
-	public void add(Escola escola) {
-		
 	}
 	
 	
