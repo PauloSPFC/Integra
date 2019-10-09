@@ -19,6 +19,10 @@ public class Escola {
 		this.tel = tel;
 	}
 
+	public Escola() {
+		
+	}
+
 	public int getMatricula() {
 		return matricula;
 	}
@@ -79,6 +83,10 @@ public class Escola {
 	public String toString() {
 		return "Escola [matricula=" + matricula + ", nome=" + nome + ", rua=" + rua + ", nro=" + nro + ", bairro="
 				+ bairro + ", cidade=" + cidade + ", tel=" + tel + "]";
+	}
+
+	public void add(Escola escola) {
+		
 	}
 	
 	
