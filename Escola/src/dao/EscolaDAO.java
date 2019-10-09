@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import com.mysql.jdbc.Connection;
 import com.mysql.jdbc.PreparedStatement;
-import bean.Pessoa;
+import bean.Escola;
 
 public class EscolaDAO {
 	private Connection connection;
@@ -14,16 +14,17 @@ public class EscolaDAO {
 		connection = new FabricaConexoes().getConnection();
 	}
 	
-	public void inserir(Pessoa p) {
-		String sql = "INSERT INTO Pessoa(codigo,nome,diaNasc,mesNasc,anoNasc,sexo) VALUES (?, ?, ?, ?, ?, ?);";
+	public void inserir(Escola es) {
+		String sql = "INSERT INTO Escola(matricula,nome,rua,nro,bairro,cidade,tel) VALUES (?, ?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, p.getCodigo());
-			stmt.setString(2, p.getNome());
-			stmt.setInt(3, p.getDiaNasc());
-			stmt.setInt(4, p.getMesNasc());
-			stmt.setInt(5, p.getAnoNasc());
-			stmt.setString(6, p.getSexo());
+			stmt.setInt(1, es.getMatricula());
+			stmt.setString(2, es.getNome());
+			stmt.setString(3, es.getRua());
+			stmt.setInt(4, es.getNro());
+			stmt.setString(5, es.getBairro());
+			stmt.setString(6, es.getCidade());
+			stmt.setInt(7, es.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -31,37 +32,38 @@ public class EscolaDAO {
 		}
 	}
 	
-	public ArrayList<Pessoa> getLista() {
-		String sql = "SELECT * FROM Pessoa";
+	public ArrayList<Escola> getLista() {
+		String sql = "SELECT * FROM Escola";
 		PreparedStatement stmt;
 		try {
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
 			ResultSet rs = stmt.executeQuery();
-			ArrayList<Pessoa> pessoas = new ArrayList<>();
+			ArrayList<Escola> escolas = new ArrayList<>();
 			while (rs.next()) {
-				Pessoa pessoa = new Pessoa();
-				pessoa.setCodigo(rs.getInt("codigo"));
-				pessoa.setNome(rs.getString("nome"));
-				pessoa.setDiaNasc(rs.getInt("diaNasc"));
-				pessoa.setMesNasc(rs.getInt("mesNasc"));
-				pessoa.setAnoNasc(rs.getInt("anoNasc"));
-				pessoa.setSexo(rs.getString("sexo"));
-				pessoas.add(pessoa);
+				Escola escola = new Escola();
+				escola.setMatricula(rs.getInt("matricula"));
+				escola.setNome(rs.getString("nome"));
+				escola.setRua(rs.getString("rua"));
+				escola.setNro(rs.getInt("nro"));
+				escola.setBairro(rs.getString("bairro"));
+				escola.setCidade(rs.getString("cidade"));
+				escola.setTel(rs.getInt("tel"));
+				escola.add(escola);
 			}
 			rs.close();
 			stmt.close();
-			return pessoas;
+			return escolas;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
 	
-	public void remover(Pessoa pessoa) {
+	public void remover(Escola escola) {
 		try {
-			String sql = "DELETE FROM Pessoa where codigo = ?";
+			String sql = "DELETE FROM Escola where codigo = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setLong(1, pessoa.getCodigo());
+			stmt.setLong(1, escola.getMatricula());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -69,16 +71,16 @@ public class EscolaDAO {
 		}
 	}
 	
-	public void alterar (Pessoa pessoa) {
-		String sql = "UPDATE Pessoa SET nome = ?,diaNasc = ?, mesNasc= ?, anoNasc = ?, sexo = ? WHERE codigo = ?";
+	public void alterar (Escola escola) {
+		String sql = "UPDATE Escola SET nome = ?,rua = ?, nro= ?, bairro = ?, tel = ? WHERE codigo = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, pessoa.getCodigo());
-			stmt.setString(2, pessoa.getNome());
-			stmt.setInt(3, pessoa.getDiaNasc());
-			stmt.setInt(4, pessoa.getMesNasc());
-			stmt.setInt(5, pessoa.getAnoNasc());
-			stmt.setString(6, pessoa.getSexo());
+			stmt.setInt(1, escola.getMatricula());
+			stmt.setString(2, escola.getNome());
+			stmt.setString(3, escola.getRua());
+			stmt.setInt(4, escola.getNro());
+			stmt.setString(5, escola.getBairro());
+			stmt.setInt(6, escola.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
