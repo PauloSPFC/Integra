@@ -83,8 +83,8 @@ public class MonitorDAO {
 			stmt.setInt(4, monitor.getTel());
 			stmt.setString(5, monitor.getRua());
 			stmt.setInt(6, monitor.getNro());
-			stmt.setString(6, monitor.getBairro());
-			stmt.setString(6, monitor.getCidade());
+			stmt.setString(7, monitor.getBairro());
+			stmt.setString(8, monitor.getCidade());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

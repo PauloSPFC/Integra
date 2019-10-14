@@ -16,9 +16,9 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>Jar</name>
+			<name>Jar.jar</name>
 			<type>1</type>
-			<location>C:/Users/IFSP/Downloads/mysql-connector-java-5.1.47.jar</location>
+			<location>C:/Users/IFSP/Desktop/Integra/mysql-connector-java-5.1.47.jar</location>
 		</link>
 	</linkedResources>
 </projectDescription>

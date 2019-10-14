@@ -68,13 +68,13 @@ public class TrajetoDAO {
 	}
 	
 	public void alterar(Trajeto trajeto) {
-		String sql = "UPDATE Pessoa SET descricao = ?,codigo = ?, temp_media= ?, tempo_passeio = ? WHERE codigo = ?";
+		String sql = "UPDATE Pessoa SET descricao = ?, temp_media= ?, tempo_passeio = ? WHERE codigo = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setInt(1, trajeto.getCodigo());
 			stmt.setString(2, trajeto.getDescricao());
-			stmt.setInt(3, trajeto.getCodigo());
-			stmt.setDouble(4, trajeto.getTemp_media());
-			stmt.setInt(5, trajeto.getTempo_passeio());
+			stmt.setDouble(3, trajeto.getTemp_media());
+			stmt.setInt(4, trajeto.getTempo_passeio());
 	
 			stmt.execute();
 			stmt.close();
