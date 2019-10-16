@@ -60,197 +60,26 @@ public class BoasVindas extends JFrame {
 	public BoasVindas() {
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(350, 150, 925, 591);
+		setBounds(220, 70, 925, 591);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lbl_close = new JLabel("X");
-		lbl_close.addMouseListener(new MouseAdapter() {
+		JLabel Btn_fechar = new JLabel("X");
+		Btn_fechar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				System.exit(0);
 			}
 		});
-		lbl_close.setHorizontalAlignment(SwingConstants.CENTER);
-		lbl_close.setForeground(new Color(241, 57, 83));
-		lbl_close.setFont(new Font("Montserrat ExtraBold", lbl_close.getFont().getStyle(), 14));
-		lbl_close.setBounds(890, 6, 46, 14);
-		contentPane.add(lbl_close);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBackground(Color.DARK_GRAY);
-		panel_1.setBounds(-10, -22, 990, 662);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
-		
-		
-		JPanel Escola = new JPanel();
-		Escola.setBounds(39, 246, 230, 260);
-		Escola.setBackground(new Color(245, 245, 245));
-		panel_1.add(Escola);
-		Escola.setLayout(null);
-		
-		JTextPane txtpnEscola = new JTextPane();
-		txtpnEscola.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Escola.setBackground(new Color(217, 217, 217));
-				txtpnEscola.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Escola.setBackground(new Color(245, 245, 245));
-				txtpnEscola.setBackground(new Color(252, 81, 133));
-			}
-		});
-		txtpnEscola.setForeground(Color.WHITE);
-		txtpnEscola.setEditable(false);
-		txtpnEscola.setFont(new Font("Montserrat SemiBold", txtpnEscola.getFont().getStyle(), 34));
-		txtpnEscola.setText("     ESCOLA\r\n");
-		txtpnEscola.setBounds(0, 208, 230, 52);
-		txtpnEscola.setBackground(new Color(252, 81, 133));
-		Escola.add(txtpnEscola);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/school.png")));
-		lblNewLabel.setBounds(50, 39, 128, 120);
-		Escola.add(lblNewLabel);
-		Escola.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Escola.setBackground(new Color(217, 217, 217));
-				txtpnEscola.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Escola.setBackground(new Color(245, 245, 245));
-				txtpnEscola.setBackground(new Color(252, 81, 133));
-			}
-		});
-		
-		JPanel Professor = new JPanel();
-		Professor.setBounds(359, 246, 230, 260);
-		panel_1.add(Professor);
-		Professor.setLayout(null);
-		
-		JTextPane txtpnProfessor = new JTextPane();
-		txtpnProfessor.setFont(new Font("Montserrat SemiBold", txtpnProfessor.getFont().getStyle(), 33));
-		txtpnProfessor.setText(" PROFESSOR\r\n\r\n");
-		txtpnProfessor.setForeground(Color.WHITE);
-		txtpnProfessor.setEditable(false);
-		txtpnProfessor.setBackground(new Color(252, 81, 133));
-		txtpnProfessor.setBounds(0, 208, 230, 52);
-		Professor.add(txtpnProfessor);
-		
-		Professor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Professor.setBackground(new Color(217, 217, 217));
-				txtpnProfessor.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Professor.setBackground(new Color(245, 245, 245));
-				txtpnProfessor.setBackground(new Color(252, 81, 133));
-			}
-		});
-		
-		txtpnProfessor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Professor.setBackground(new Color(217, 217, 217));
-				txtpnProfessor.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Professor.setBackground(new Color(245, 245, 245));
-				txtpnProfessor.setBackground(new Color(252, 81, 133));
-			}
-		});
-		
-		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/education.png")));
-		label.setBounds(53, 22, 134, 151);
-		Professor.add(label);
-		
-		JPanel Monitor = new JPanel();
-		Monitor.setBounds(676, 246, 230, 260);
-		panel_1.add(Monitor);
-		Monitor.setLayout(null);
-		
-		JTextPane txtpnMonitor = new JTextPane();
-		txtpnMonitor.setFont(new Font("Montserrat SemiBold", txtpnMonitor.getFont().getStyle(), 34));
-		txtpnMonitor.setText("   MONITOR\r\n");
-		txtpnMonitor.setForeground(Color.WHITE);
-		txtpnMonitor.setEditable(false);
-		txtpnMonitor.setBackground(new Color(252, 81, 133));
-		txtpnMonitor.setBounds(0, 208, 230, 52);
-		Monitor.add(txtpnMonitor);
-		
-		Monitor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Monitor.setBackground(new Color(217, 217, 217));
-				txtpnMonitor.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Monitor.setBackground(new Color(245, 245, 245));
-				txtpnMonitor.setBackground(new Color(252, 81, 133));
-			}
-		});
-		
-		txtpnMonitor.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				Monitor.setBackground(new Color(217, 217, 217));
-				txtpnMonitor.setBackground(new Color(63, 193, 201));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				Monitor.setBackground(new Color(245, 245, 245));
-				txtpnMonitor.setBackground(new Color(252, 81, 133));
-			}
-		});
-		
-		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/lifejacket.png")));
-		label_1.setBounds(50, 25, 128, 137);
-		Monitor.add(label_1);
-		
-		JPanel Titulo = new JPanel();
-		Titulo.setBounds(0, 11, 980, 89);
-		Titulo.setBackground(new Color(63, 193, 201));
-		panel_1.add(Titulo);
-		Titulo.setLayout(null);
-		
-		JTextPane txtpnBemvindoAoEscola = new JTextPane();
-		txtpnBemvindoAoEscola.setEditable(false);
-		txtpnBemvindoAoEscola.setFont(new Font("Lato Heavy", txtpnBemvindoAoEscola.getFont().getStyle(), 37));
-		txtpnBemvindoAoEscola.setForeground(Color.WHITE);
-		txtpnBemvindoAoEscola.setBounds(10, 19, 745, 78);
-		txtpnBemvindoAoEscola.setText("                               ESCOLA NO CERRADO");
-		txtpnBemvindoAoEscola.setBackground(new Color(63, 193, 201));
-		Titulo.add(txtpnBemvindoAoEscola);
-		
-		JTextPane txtpnVoc = new JTextPane();
-		txtpnVoc.setForeground(Color.WHITE);
-		txtpnVoc.setFont(new Font("Lato Semibold", txtpnVoc.getFont().getStyle(), 44));
-		txtpnVoc.setText("Voc\u00EA \u00E9...");
-		txtpnVoc.setEditable(false);
-		txtpnVoc.setBackground(Color.DARK_GRAY);
-		txtpnVoc.setBounds(380, 151, 635, 60);
-		panel_1.add(txtpnVoc);
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setFont(new Font("Montserrat Medium", lblNewLabel_1.getFont().getStyle(), 16));
-		lblNewLabel_1.setBounds(0, 11, 980, 640);
-		panel_1.add(lblNewLabel_1);
-		lblNewLabel_1.addMouseListener(new MouseAdapter() {
+		JLabel Lbl_mousemove = new JLabel("");
+		Lbl_mousemove.setBounds(0, 0, 909, 79);
+		contentPane.add(Lbl_mousemove);
+		Lbl_mousemove.setFont(new Font("Montserrat Medium", Lbl_mousemove.getFont().getStyle(), 16));
+		Lbl_mousemove.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mousePressed(MouseEvent e) {
 				xx = e.getX();
@@ -258,7 +87,7 @@ public class BoasVindas extends JFrame {
 			}
 		});
 		
-		lblNewLabel_1.addMouseMotionListener(new MouseMotionAdapter() {
+		Lbl_mousemove.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				int x = e.getXOnScreen();
@@ -267,5 +96,183 @@ public class BoasVindas extends JFrame {
 		        BoasVindas.this.setLocation(x - xx, y - xy);
 			}
 		});
+		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
+		Btn_fechar.setForeground(new Color(241, 57, 83));
+		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
+		Btn_fechar.setBounds(890, 6, 46, 14);
+		contentPane.add(Btn_fechar);
+		
+		JPanel Container_principal = new JPanel();
+		Container_principal.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		Container_principal.setBackground(Color.DARK_GRAY);
+		Container_principal.setBounds(-10, -22, 990, 662);
+		contentPane.add(Container_principal);
+		Container_principal.setLayout(null);
+		
+		
+		JPanel Escola = new JPanel();
+		Escola.setBounds(39, 246, 230, 260);
+		Escola.setBackground(new Color(245, 245, 245));
+		Container_principal.add(Escola);
+		Escola.setLayout(null);
+		
+		JTextPane Btn_Escola = new JTextPane();
+		Btn_Escola.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Escola.setBackground(new Color(217, 217, 217));
+				Btn_Escola.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Escola.setBackground(new Color(245, 245, 245));
+				Btn_Escola.setBackground(new Color(252, 81, 133));
+			}
+		});
+		Btn_Escola.setForeground(Color.WHITE);
+		Btn_Escola.setEditable(false);
+		Btn_Escola.setFont(new Font("Montserrat SemiBold", Btn_Escola.getFont().getStyle(), 34));
+		Btn_Escola.setText("     ESCOLA\r\n");
+		Btn_Escola.setBounds(0, 219, 230, 41);
+		Btn_Escola.setBackground(new Color(252, 81, 133));
+		Escola.add(Btn_Escola);
+		
+		JLabel Icone_Escola = new JLabel("");
+		Icone_Escola.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/school.png")));
+		Icone_Escola.setBounds(50, 51, 128, 120);
+		Escola.add(Icone_Escola);
+		Escola.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Escola.setBackground(new Color(217, 217, 217));
+				Btn_Escola.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Escola.setBackground(new Color(245, 245, 245));
+				Btn_Escola.setBackground(new Color(252, 81, 133));
+			}
+		});
+		
+		JPanel Professor = new JPanel();
+		Professor.setBounds(359, 246, 230, 260);
+		Container_principal.add(Professor);
+		Professor.setLayout(null);
+		
+		JTextPane Btn_Professor = new JTextPane();
+		Btn_Professor.setFont(new Font("Montserrat SemiBold", Btn_Professor.getFont().getStyle(), 33));
+		Btn_Professor.setText(" PROFESSOR\r\n\r\n");
+		Btn_Professor.setForeground(Color.WHITE);
+		Btn_Professor.setEditable(false);
+		Btn_Professor.setBackground(new Color(252, 81, 133));
+		Btn_Professor.setBounds(0, 219, 230, 41);
+		Professor.add(Btn_Professor);
+		
+		Professor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Professor.setBackground(new Color(217, 217, 217));
+				Btn_Professor.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Professor.setBackground(new Color(245, 245, 245));
+				Btn_Professor.setBackground(new Color(252, 81, 133));
+			}
+		});
+		
+		Btn_Professor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Professor.setBackground(new Color(217, 217, 217));
+				Btn_Professor.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Professor.setBackground(new Color(245, 245, 245));
+				Btn_Professor.setBackground(new Color(252, 81, 133));
+			}
+		});
+		
+		JLabel Icone_Professor = new JLabel("");
+		Icone_Professor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/education.png")));
+		Icone_Professor.setBounds(53, 35, 134, 151);
+		Professor.add(Icone_Professor);
+		
+		JPanel Monitor = new JPanel();
+		Monitor.setBounds(676, 246, 230, 260);
+		Container_principal.add(Monitor);
+		Monitor.setLayout(null);
+		
+		JTextPane Btn_Monitor = new JTextPane();
+		Btn_Monitor.setFont(new Font("Montserrat SemiBold", Btn_Monitor.getFont().getStyle(), 34));
+		Btn_Monitor.setText("   MONITOR\r\n");
+		Btn_Monitor.setForeground(Color.WHITE);
+		Btn_Monitor.setEditable(false);
+		Btn_Monitor.setBackground(new Color(252, 81, 133));
+		Btn_Monitor.setBounds(0, 219, 230, 41);
+		Monitor.add(Btn_Monitor);
+		
+		Monitor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Monitor.setBackground(new Color(217, 217, 217));
+				Btn_Monitor.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Monitor.setBackground(new Color(245, 245, 245));
+				Btn_Monitor.setBackground(new Color(252, 81, 133));
+			}
+		});
+		
+		Btn_Monitor.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Monitor.setBackground(new Color(217, 217, 217));
+				Btn_Monitor.setBackground(new Color(63, 193, 201));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Monitor.setBackground(new Color(245, 245, 245));
+				Btn_Monitor.setBackground(new Color(252, 81, 133));
+			}
+		});
+		
+		JLabel Icone_Monitor = new JLabel("");
+		Icone_Monitor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/lifejacket.png")));
+		Icone_Monitor.setBounds(50, 46, 128, 137);
+		Monitor.add(Icone_Monitor);
+		
+		JPanel Titulo = new JPanel();
+		Titulo.setBounds(0, 11, 980, 89);
+		Titulo.setBackground(new Color(63, 193, 201));
+		Container_principal.add(Titulo);
+		Titulo.setLayout(null);
+		
+		JTextPane Header = new JTextPane();
+		Header.setEditable(false);
+		Header.setFont(new Font("Lato Heavy", Header.getFont().getStyle(), 40));
+		Header.setForeground(Color.WHITE);
+		Header.setBounds(-32, 23, 745, 85);
+		Header.setText("                               ESCOLA NO CERRADO");
+		Header.setBackground(new Color(63, 193, 201));
+		Titulo.add(Header);
+		
+		JPanel Voce = new JPanel();
+		Voce.setBounds(10, 140, 970, 60);
+		Voce.setBackground(new Color(102, 102, 102));
+		Container_principal.add(Voce);
+		Voce.setLayout(null);
+		
+		JTextPane Row_vc = new JTextPane();
+		Row_vc.setHighlighter(null);
+		Row_vc.setBounds(376, 0, 169, 60);
+		Row_vc.setBackground(new Color(102, 102, 102));
+		Voce.add(Row_vc);
+		Row_vc.setForeground(Color.WHITE);
+		Row_vc.setFont(new Font("Lato Thin", Row_vc.getFont().getStyle(), 44));
+		Row_vc.setText("Voc\u00EA \u00E9...");
+		Row_vc.setEditable(false);
 	}
 }
