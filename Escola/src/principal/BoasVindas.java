@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Button;
 import java.awt.SystemColor;
 import javax.swing.JTextField;
@@ -29,14 +30,14 @@ import javax.swing.DropMode;
 import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
+import java.awt.Window.Type;
 
 public class BoasVindas extends JFrame {
 
 	private JPanel contentPane;
-
+	
 	int xx;
 	int xy;
-	
 	/**
 	 * Launch the application.
 	 */
@@ -58,25 +59,63 @@ public class BoasVindas extends JFrame {
 	 * Create the frame.
 	 */
 	public BoasVindas() {
+		
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(220, 70, 925, 591);
+		setBounds(220, 70, 928, 591);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel Btn_fechar = new JLabel("X");
+		JLabel Btn_minimize = new JLabel("");
+		Btn_minimize.setBounds(872, 3, 20, 28);
+		contentPane.add(Btn_minimize);
+		Btn_minimize.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Btn_minimize.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_minimize.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
+		});
+		
+		JLabel Btn_fechar = new JLabel("");
+		Btn_fechar.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
+		Btn_fechar.setForeground(new Color(241, 57, 83));
+		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
+		Btn_fechar.setBounds(891, 1, 38, 32);
+		contentPane.add(Btn_fechar);
 		Btn_fechar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				System.exit(0);
 			}
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Btn_fechar.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Btn_fechar.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
 		});
 		
 		JLabel Lbl_mousemove = new JLabel("");
-		Lbl_mousemove.setBounds(0, 0, 909, 79);
+		Lbl_mousemove.setBounds(0, 0, 894, 79);
 		contentPane.add(Lbl_mousemove);
 		Lbl_mousemove.setFont(new Font("Montserrat Medium", Lbl_mousemove.getFont().getStyle(), 16));
 		Lbl_mousemove.addMouseListener(new MouseAdapter() {
@@ -96,11 +135,6 @@ public class BoasVindas extends JFrame {
 		        BoasVindas.this.setLocation(x - xx, y - xy);
 			}
 		});
-		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
-		Btn_fechar.setForeground(new Color(241, 57, 83));
-		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
-		Btn_fechar.setBounds(890, 6, 46, 14);
-		contentPane.add(Btn_fechar);
 		
 		JPanel Container_principal = new JPanel();
 		Container_principal.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -111,6 +145,7 @@ public class BoasVindas extends JFrame {
 		
 		
 		JPanel Escola = new JPanel();
+		Escola.setForeground(Color.WHITE);
 		Escola.setBounds(39, 246, 230, 260);
 		Escola.setBackground(new Color(245, 245, 245));
 		Container_principal.add(Escola);
@@ -122,11 +157,15 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Escola.setBackground(new Color(217, 217, 217));
 				Btn_Escola.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Escola.setBackground(new Color(245, 245, 245));
 				Btn_Escola.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		Btn_Escola.setForeground(Color.WHITE);
@@ -138,7 +177,7 @@ public class BoasVindas extends JFrame {
 		Escola.add(Btn_Escola);
 		
 		JLabel Icone_Escola = new JLabel("");
-		Icone_Escola.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/school.png")));
+		Icone_Escola.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/school.png")));
 		Icone_Escola.setBounds(50, 51, 128, 120);
 		Escola.add(Icone_Escola);
 		Escola.addMouseListener(new MouseAdapter() {
@@ -146,14 +185,17 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Escola.setBackground(new Color(217, 217, 217));
 				Btn_Escola.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Escola.setBackground(new Color(245, 245, 245));
 				Btn_Escola.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
 		JPanel Professor = new JPanel();
 		Professor.setBounds(359, 246, 230, 260);
 		Container_principal.add(Professor);
@@ -173,11 +215,15 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Professor.setBackground(new Color(217, 217, 217));
 				Btn_Professor.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Professor.setBackground(new Color(245, 245, 245));
 				Btn_Professor.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
@@ -186,16 +232,20 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Professor.setBackground(new Color(217, 217, 217));
 				Btn_Professor.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Professor.setBackground(new Color(245, 245, 245));
 				Btn_Professor.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Icone_Professor = new JLabel("");
-		Icone_Professor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/education.png")));
+		Icone_Professor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/education.png")));
 		Icone_Professor.setBounds(53, 35, 134, 151);
 		Professor.add(Icone_Professor);
 		
@@ -218,11 +268,15 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Monitor.setBackground(new Color(217, 217, 217));
 				Btn_Monitor.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Monitor.setBackground(new Color(245, 245, 245));
 				Btn_Monitor.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
@@ -231,16 +285,20 @@ public class BoasVindas extends JFrame {
 			public void mouseEntered(MouseEvent arg0) {
 				Monitor.setBackground(new Color(217, 217, 217));
 				Btn_Monitor.setBackground(new Color(63, 193, 201));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Monitor.setBackground(new Color(245, 245, 245));
 				Btn_Monitor.setBackground(new Color(252, 81, 133));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Icone_Monitor = new JLabel("");
-		Icone_Monitor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/lifejacket.png")));
+		Icone_Monitor.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/lifejacket.png")));
 		Icone_Monitor.setBounds(50, 46, 128, 137);
 		Monitor.add(Icone_Monitor);
 		
@@ -251,10 +309,10 @@ public class BoasVindas extends JFrame {
 		Titulo.setLayout(null);
 		
 		JTextPane Header = new JTextPane();
+		Header.setBounds(-32, 23, 745, 85);
 		Header.setEditable(false);
 		Header.setFont(new Font("Lato Heavy", Header.getFont().getStyle(), 40));
 		Header.setForeground(Color.WHITE);
-		Header.setBounds(-32, 23, 745, 85);
 		Header.setText("                               ESCOLA NO CERRADO");
 		Header.setBackground(new Color(63, 193, 201));
 		Titulo.add(Header);
@@ -267,12 +325,36 @@ public class BoasVindas extends JFrame {
 		
 		JTextPane Row_vc = new JTextPane();
 		Row_vc.setHighlighter(null);
-		Row_vc.setBounds(376, 0, 169, 60);
+		Row_vc.setBounds(382, 5, 169, 60);
 		Row_vc.setBackground(new Color(102, 102, 102));
 		Voce.add(Row_vc);
 		Row_vc.setForeground(Color.WHITE);
-		Row_vc.setFont(new Font("Lato Thin", Row_vc.getFont().getStyle(), 44));
+		Row_vc.setFont(new Font("Montserrat Thin", Row_vc.getFont().getStyle(), 42));
 		Row_vc.setText("Voc\u00EA \u00E9...");
 		Row_vc.setEditable(false);
+		
+		JLabel Logo = new JLabel("");
+		Logo.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Logo/logopb64.png")));
+		Logo.setBounds(499, 540, 65, 68);
+		Container_principal.add(Logo);
+		Logo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				Logo.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Logo/logo64.png")));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				Logo.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Logo/logopb64.png")));
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
+		});
+		
+		JTextPane txt_Direitos = new JTextPane();
+		txt_Direitos.setForeground(Color.WHITE);
+		txt_Direitos.setFont(new Font("Lato Thin", txt_Direitos.getFont().getStyle(), 14));
+		txt_Direitos.setText("Desenvolvido por ");
+		txt_Direitos.setBackground(Color.DARK_GRAY);
+		txt_Direitos.setBounds(391, 566, 797, 20);
+		Container_principal.add(txt_Direitos);
 	}
 }
