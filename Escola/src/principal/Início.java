@@ -89,7 +89,6 @@ public class Início extends JFrame {
 			}
 		});
 		lblNewLabel_1.setVerticalAlignment(SwingConstants.TOP);
-		lblNewLabel_1.setIcon(new ImageIcon(Início.class.getResource("/Imagens/photo-1512505965932-0dbfa7e7b8c8.jpg")));
 		
 		Button button = new Button("Cadastrar");
 		button.addActionListener(new ActionListener() {
