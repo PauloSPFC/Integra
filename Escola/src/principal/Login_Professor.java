@@ -50,14 +50,14 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Login_Escola extends JFrame {
+public class Login_Professor extends JFrame {
 
 	private JPanel contentPane;
 	
 	int xx;
 	int xy;
-	private JTextField inp_nome;
-	private JPasswordField inp_mat;
+	private JTextField inp_cpf;
+	private JPasswordField inp_senha;
 	int click_count = -1;
 	/**
 	 * Launch the application.
@@ -66,7 +66,7 @@ public class Login_Escola extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login_Escola frame = new Login_Escola();
+					Login_Professor frame = new Login_Professor();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
@@ -80,7 +80,7 @@ public class Login_Escola extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login_Escola() {
+	public Login_Professor() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		setBackground(Color.WHITE);
@@ -106,17 +106,17 @@ public class Login_Escola extends JFrame {
 		Btn_minimize.setBorderPainted(false);
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
-		Btn_minimize.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -125,7 +125,7 @@ public class Login_Escola extends JFrame {
 		JLabel Btn_fechar = new JLabel("");
 		Btn_fechar.setBounds(342, -4, 38, 32);
 		contentPane.add(Btn_fechar);
-		Btn_fechar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
 		Btn_fechar.setForeground(new Color(241, 57, 83));
 		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
@@ -136,13 +136,13 @@ public class Login_Escola extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_fechar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				Btn_fechar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_fechar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				Btn_fechar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -151,7 +151,7 @@ public class Login_Escola extends JFrame {
 		JLabel Btn_voltar = new JLabel("");
 		Btn_voltar.setBounds(4, 6, 16, 13);
 		contentPane.add(Btn_voltar);
-		Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
+		Btn_voltar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
 		Btn_voltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -164,13 +164,13 @@ public class Login_Escola extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar_hover.png")));
+				Btn_voltar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/voltar_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
+				Btn_voltar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -194,7 +194,7 @@ public class Login_Escola extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Login_Escola.this.setLocation(x - xx, y - xy);
+		        Login_Professor.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -205,35 +205,35 @@ public class Login_Escola extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
-		inp_nome = new JTextField();
-		inp_nome.setToolTipText("");
-		inp_nome.setForeground(Color.DARK_GRAY);
-		inp_nome.setFont(new Font("Century Gothic", Font.BOLD, 16));
-		inp_nome.setBackground(Color.WHITE);
-		inp_nome.setBounds(22, 404, 344, 26);
-		Container_principal.add(inp_nome);
-		inp_nome.setColumns(10);
-		inp_nome.setBorder(null);
-		inp_nome.setEnabled(true);
+		inp_cpf = new JTextField();
+		inp_cpf.setToolTipText("");
+		inp_cpf.setForeground(Color.DARK_GRAY);
+		inp_cpf.setFont(new Font("Century Gothic", Font.BOLD, 16));
+		inp_cpf.setBackground(Color.WHITE);
+		inp_cpf.setBounds(22, 404, 344, 26);
+		Container_principal.add(inp_cpf);
+		inp_cpf.setColumns(10);
+		inp_cpf.setBorder(null);
+		inp_cpf.setEnabled(true);
 		
 		
-		inp_mat = new JPasswordField();
-		inp_mat.setColumns(10);
-		inp_mat.setForeground(Color.DARK_GRAY);
-		inp_mat.setFont(new Font("Century Gothic", Font.BOLD, 16));
-		inp_mat.setBounds(22, 488, 318, 26);
-		inp_mat.setBorder(null);
-		inp_mat.setEnabled(true);
-		Container_principal.add(inp_mat);
+		inp_senha = new JPasswordField();
+		inp_senha.setColumns(10);
+		inp_senha.setForeground(Color.DARK_GRAY);
+		inp_senha.setFont(new Font("Century Gothic", Font.BOLD, 16));
+		inp_senha.setBounds(22, 488, 318, 26);
+		inp_senha.setBorder(null);
+		inp_senha.setEnabled(true);
+		Container_principal.add(inp_senha);
 		
 		
 		JLabel Ver = new JLabel("");
 		Ver.setVisible(false);
 		Ver.setBackground(SystemColor.text);
-		Ver.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/ver.png")));
+		Ver.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/ver_p.png")));
 		Ver.setBounds(346, 488, 20, 20);
 		Container_principal.add(Ver);
-		inp_mat.addFocusListener(new FocusAdapter() {
+		inp_senha.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent arg0) {
 					Ver.setVisible(true);
@@ -248,11 +248,11 @@ public class Login_Escola extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				click_count++;
 				if (click_count %2 == 0) {
-					inp_mat.setEchoChar((char)0);
-					Ver.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/desver.png")));
+					inp_senha.setEchoChar((char)0);
+					Ver.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/desver.png")));
 				} else {
-					inp_mat.setEchoChar('\u2022');
-					Ver.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/ver.png")));
+					inp_senha.setEchoChar('\u2022');
+					Ver.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/ver_p.png")));
 				}
 				
 				
@@ -270,14 +270,14 @@ public class Login_Escola extends JFrame {
 		});
 		
 		JLabel Btn_Entrar = new JLabel("");
-		Btn_Entrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Botões/entrar_e.png")));
+		Btn_Entrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Botões/entrar_p.png")));
 		Btn_Entrar.setBounds(120, 528, 162, 49);
 		Container_principal.add(Btn_Entrar);
 		Btn_Entrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String nome = inp_nome.getText();
-				String matricula = inp_mat.getText();
+				String nome = inp_cpf.getText();
+				String matricula = inp_senha.getText();
 				EscolaDAO escola = new EscolaDAO();
 				System.out.println(escola.checkLogin(nome, matricula));
 				if (escola.checkLogin(nome, matricula)) {
@@ -288,26 +288,26 @@ public class Login_Escola extends JFrame {
 					er.setUndecorated(true);
 					er.setVisible(true);
 					er.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
-					er.escola = true;
+					er.professor = true;		
 				}
 				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_Entrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/entrar_hover.png")));
+				Btn_Entrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/entrar_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_Entrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/entrar_e.png")));
+				Btn_Entrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/entrar_p.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Btn_Cadastrar = new JLabel("");
-		Btn_Cadastrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Botões/cadastrar.png")));
+		Btn_Cadastrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Botões/cadastrar.png")));
 		Btn_Cadastrar.setBounds(230, 577, 152, 36);
 		Container_principal.add(Btn_Cadastrar);
 		Btn_Cadastrar.addMouseListener(new MouseAdapter() {
@@ -317,12 +317,12 @@ public class Login_Escola extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_Cadastrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/cadastrar_hover.png")));
+				Btn_Cadastrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Bot\u00F5es/cadastrar_hover.png")));
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent arg0) {
-				Btn_Cadastrar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Botões/cadastrar.png")));
+				Btn_Cadastrar.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Botões/cadastrar.png")));
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
@@ -330,7 +330,7 @@ public class Login_Escola extends JFrame {
 		
 		JLabel Fundo = new JLabel("");
 		Fundo.setBounds(10, 22, 379, 591);
-		Fundo.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Cenas/login_escola.jpg")));
+		Fundo.setIcon(new ImageIcon(Login_Professor.class.getResource("/Imagens/Cenas/login_professor.jpg")));
 		Container_principal.add(Fundo);
 	}
 }

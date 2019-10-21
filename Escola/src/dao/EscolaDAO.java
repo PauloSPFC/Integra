@@ -85,6 +85,27 @@ public class EscolaDAO {
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		}
+			}
 	}
+	
+	public boolean checkLogin (String nome, String matricula) {
+		boolean check = false;
+		String sql = "SELECT * FROM escola WHERE nome = ? and matricula = ?";
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+		
+			stmt.setString(1, nome);
+			stmt.setString(2, matricula);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+}

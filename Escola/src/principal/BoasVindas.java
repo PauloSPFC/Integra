@@ -329,23 +329,23 @@ public class BoasVindas extends JFrame {
 		Titulo.setLayout(null);
 		
 		JLabel Caderno = new JLabel("");
-		Caderno.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/notebook.png")));
 		Caderno.setBounds(195, 14, 71, 74);
+		Caderno.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/notebook.png")));
 		Titulo.add(Caderno);
 		
+		JLabel Folha = new JLabel("");
+		Folha.setBounds(722, 15, 71, 74);
+		Folha.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/plant.png")));
+		Titulo.add(Folha);
+		
 		JTextPane Header = new JTextPane();
-		Header.setBounds(-32, 23, 745, 85);
+		Header.setBounds(275, 23, 450, 85);
 		Header.setEditable(false);
 		Header.setFont(new Font("Lato Heavy", Header.getFont().getStyle(), 40));
 		Header.setForeground(Color.WHITE);
-		Header.setText("                               ESCOLA NO CERRADO");
+		Header.setText("ESCOLA NO CERRADO");
 		Header.setBackground(new Color(85,249,134));
 		Titulo.add(Header);
-		
-		JLabel Folha = new JLabel("");
-		Folha.setIcon(new ImageIcon(BoasVindas.class.getResource("/Imagens/Icones/plant.png")));
-		Folha.setBounds(722, 15, 71, 74);
-		Titulo.add(Folha);
 		
 		JPanel Voce = new JPanel();
 		Voce.setBounds(10, 140, 970, 60);
@@ -384,7 +384,7 @@ public class BoasVindas extends JFrame {
 		txt_Direitos.setFont(new Font("Roboto", Font.PLAIN, 16));
 		txt_Direitos.setText("Desenvolvido por              ");
 		txt_Direitos.setBackground(Color.DARK_GRAY);
-		txt_Direitos.setBounds(383, 560, 797, 20);
+		txt_Direitos.setBounds(383, 560, 200, 20);
 		Container_principal.add(txt_Direitos);
 		
 	}
