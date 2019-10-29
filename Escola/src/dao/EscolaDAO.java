@@ -15,7 +15,7 @@ public class EscolaDAO {
 	}
 	
 	public void inserir(Escola es) {
-		String sql = "INSERT INTO Escola(matricula,nome,rua,nro,bairro,cidade,tel) VALUES (?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO Escola(matricula,nome,rua,nro,bairro,cidade,tel) VALUES (?, ?, ?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setInt(1, es.getMatricula());
@@ -24,7 +24,7 @@ public class EscolaDAO {
 			stmt.setInt(4, es.getNro());
 			stmt.setString(5, es.getBairro());
 			stmt.setString(6, es.getCidade());
-			stmt.setInt(7, es.getTel());
+			stmt.setString(7, es.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -47,7 +47,7 @@ public class EscolaDAO {
 				escola.setNro(rs.getInt("nro"));
 				escola.setBairro(rs.getString("bairro"));
 				escola.setCidade(rs.getString("cidade"));
-				escola.setTel(rs.getInt("tel"));
+				escola.setTel(rs.getString("tel"));
 				escola.add(escola);
 			}
 			rs.close();
@@ -80,7 +80,7 @@ public class EscolaDAO {
 			stmt.setString(3, escola.getRua());
 			stmt.setInt(4, escola.getNro());
 			stmt.setString(5, escola.getBairro());
-			stmt.setInt(6, escola.getTel());
+			stmt.setString(6, escola.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

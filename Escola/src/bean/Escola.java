@@ -7,9 +7,9 @@ public class Escola {
 	private int nro;
 	private String bairro;
 	private String cidade;
-	private int tel;
+	private String tel;
 	
-	public Escola(int matricula, String nome, String rua, int nro, String bairro, String cidade, int tel) {
+	public Escola(int matricula, String nome, String rua, int nro, String bairro, String cidade, String tel) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.rua = rua;
@@ -71,11 +71,11 @@ public class Escola {
 		this.cidade = cidade;
 	}
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 

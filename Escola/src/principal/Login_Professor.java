@@ -313,7 +313,11 @@ public class Login_Professor extends JFrame {
 		Btn_Cadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				
+				dispose();
+				Cadastro_Professor cp = new Cadastro_Professor();
+				cp.setUndecorated(true);
+				cp.setVisible(true);
+				cp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
