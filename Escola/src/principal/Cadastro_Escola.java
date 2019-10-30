@@ -3,6 +3,7 @@ package principal;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -45,6 +46,8 @@ import javax.swing.border.MatteBorder;
 import java.awt.Window.Type;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Cadastro_Escola extends JFrame {
 
@@ -60,6 +63,8 @@ public class Cadastro_Escola extends JFrame {
 	private String bairro;
 	private String cidade;
 	private String tel;
+	private String estado;
+	private boolean cadastra = true;
 	/**
 	 * Launch the application.
 	 */
@@ -250,26 +255,12 @@ public class Cadastro_Escola extends JFrame {
 		Inp_rua.setColumns(10);
 		
 		Inp_nome = new JTextField();
-		Inp_nome.setForeground(Color.LIGHT_GRAY);
-		Inp_nome.setText("Insira o nome da escola");
+		Inp_nome.setForeground(Color.BLACK);
 		Inp_nome.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		Inp_nome.setBorder(null);
 		Inp_nome.setBounds(36, 167, 430, 29);
 		Container_principal.add(Inp_nome);
 		Inp_nome.setColumns(10);
-		Inp_nome.addFocusListener(new FocusAdapter() {
-			@Override
-			public void focusGained(FocusEvent arg0) {
-				Inp_nome.setForeground(Color.BLACK);
-				Inp_nome.setText("");
-			}
-			public void focusLost(FocusEvent arg0) {
-				if (Inp_nome.getText().isEmpty()) {
-					Inp_nome.setForeground(Color.LIGHT_GRAY);
-					Inp_nome.setText("Insira o nome da escola");
-				}
-			}
-		});
 		
 		JLabel Btn_cad = new JLabel("");
 		Btn_cad.setIcon(new ImageIcon(Cadastro_Escola.class.getResource("/Imagens/Bot\u00F5es/btn_cad.png")));
@@ -277,16 +268,61 @@ public class Cadastro_Escola extends JFrame {
 		Container_principal.add(Btn_cad);
 		Btn_cad.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
+			public void mouseClicked(MouseEvent arg0) {				
 				nome = Inp_nome.getText();
 				rua = Inp_rua.getText();
 				nro = Integer.parseInt(Inp_nro.getText());
 				bairro = Inp_bairro.getText();
 				cidade = Inp_cidade.getText();
 				tel = Inp_telefone.getText();
-				Escola e = new Escola(0,nome,rua,nro,bairro, cidade,tel);
+				estado = Inp_estado.getText();	
 				EscolaDAO ed = new EscolaDAO();
-				ed.inserir(e);
+				
+				String erro1 = "O campo nome só deve possuir letras";
+				
+				String guarda = Inp_nome.getText();
+				for(Character c : nome.toCharArray())
+				{
+				    if (c.isDigit(c))
+				   {
+				      cadastra = false;		
+				      Inp_nome.setForeground(new Color(255, 128, 128));
+				      Inp_nome.setText(erro1);							 
+				      
+				      Inp_nome.addMouseListener(new MouseAdapter() {
+							@Override
+							public void mouseClicked(MouseEvent e) {
+								Inp_nome.setText(guarda);
+								Inp_nome.setForeground(Color.BLACK);
+							}
+					  }); 				 
+				     
+				   } else {
+					   cadastra = true;
+				   }
+				}
+											
+				//GERA MATRICULA
+				Random rnd = new Random();
+				matricula = 1000 + rnd.nextInt(10000 - 1000);
+
+				Escola e = new Escola(matricula,nome,rua,nro,bairro, cidade,tel,estado);
+				while (ed.checkMatricula(matricula) == true) {
+					matricula = 1000 + rnd.nextInt(10000 - 1000);
+					System.out.println(matricula);
+					break;
+				}
+				
+				if (Inp_nome.getText().equals(erro1)) {
+					cadastra = false;
+				}
+				
+				if (ed.checkCadastro(nome) || cadastra == false) {
+					Btn_minimize.setVisible(false);
+				} else {
+					ed.inserir(e);
+				}
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

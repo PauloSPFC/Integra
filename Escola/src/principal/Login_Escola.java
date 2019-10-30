@@ -279,7 +279,6 @@ public class Login_Escola extends JFrame {
 				String nome = inp_nome.getText();
 				String matricula = inp_mat.getText();
 				EscolaDAO escola = new EscolaDAO();
-				System.out.println(escola.checkLogin(nome, matricula));
 				if (escola.checkLogin(nome, matricula)) {
 					Btn_minimize.setVisible(false);
 				} else {

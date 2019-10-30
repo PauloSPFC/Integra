@@ -8,8 +8,9 @@ public class Escola {
 	private String bairro;
 	private String cidade;
 	private String tel;
+	private String estado;
 	
-	public Escola(int matricula, String nome, String rua, int nro, String bairro, String cidade, String tel) {
+	public Escola(int matricula, String nome, String rua, int nro, String bairro, String cidade, String tel, String estado) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.rua = rua;
@@ -17,6 +18,7 @@ public class Escola {
 		this.bairro = bairro;
 		this.cidade = cidade;
 		this.tel = tel;
+		this.estado = estado;
 	}
 
 	public Escola() {
@@ -79,10 +81,18 @@ public class Escola {
 		this.tel = tel;
 	}
 
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 	@Override
 	public String toString() {
 		return "Escola [matricula=" + matricula + ", nome=" + nome + ", rua=" + rua + ", nro=" + nro + ", bairro="
-				+ bairro + ", cidade=" + cidade + ", tel=" + tel + "]";
+				+ bairro + ", cidade=" + cidade + ", tel=" + tel + ", estado=" + estado + "]";
 	}
 
 	public void add(Escola escola) {

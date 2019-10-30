@@ -7,7 +7,7 @@ import com.mysql.jdbc.Connection;
 public class FabricaConexoes {
 	public Connection getConnection() {
 		try {
-			return (Connection) DriverManager.getConnection("jdbc:mysql://localhost/cerrado?useSSL=false","root", "paulo");
+			return (Connection) DriverManager.getConnection("jdbc:mysql://localhost/projeto?useSSL=false","root", "ifsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
