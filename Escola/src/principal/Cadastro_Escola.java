@@ -278,6 +278,10 @@ public class Cadastro_Escola extends JFrame {
 				estado = Inp_estado.getText();	
 				EscolaDAO ed = new EscolaDAO();
 				
+				//Validações
+				
+					//Nome
+				
 				String erro1 = "O campo nome só deve possuir letras";
 				
 				String guarda = Inp_nome.getText();
@@ -301,6 +305,19 @@ public class Cadastro_Escola extends JFrame {
 					   cadastra = true;
 				   }
 				}
+				
+					//Numero
+				
+				String erro2 = "O campo número só deve possuir números";
+				
+				String valorTextField;
+				int valorIntegerTextField;
+				try{
+				    valorTextField = Inp_nro.getText();
+				    valorIntegerTextField = Integer.parseInt(valorTextField);				    
+				}catch(NumberFormatException e){
+				    cadastra = false;
+				}
 											
 				//GERA MATRICULA
 				Random rnd = new Random();
@@ -314,6 +331,10 @@ public class Cadastro_Escola extends JFrame {
 				}
 				
 				if (Inp_nome.getText().equals(erro1)) {
+					cadastra = false;
+				}
+				
+				if (Inp_nro.getText().equals(erro2)) {
 					cadastra = false;
 				}
 				

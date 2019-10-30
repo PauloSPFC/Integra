@@ -159,7 +159,7 @@ public class Er_Login extends JFrame {
 					Login_Escola l = new Login_Escola();
 					l.setUndecorated(true);
 					l.setVisible(true);
-					l.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					l.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					l.setVisible(true);
 					escola = false;
@@ -167,7 +167,7 @@ public class Er_Login extends JFrame {
 					Login_Professor p = new Login_Professor();
 					p.setUndecorated(true);
 					p.setVisible(true);
-					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					p.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					p.setVisible(true);
 					professor = false;
@@ -175,7 +175,7 @@ public class Er_Login extends JFrame {
 					Login_Monitor m = new Login_Monitor();
 					m.setUndecorated(true);
 					m.setVisible(true);
-					m.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					m.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					m.setVisible(true);
 					monitor = false;
