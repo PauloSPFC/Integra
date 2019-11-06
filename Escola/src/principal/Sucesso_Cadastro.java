@@ -50,7 +50,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Er_Cadastro extends JFrame {
+public class Sucesso_Cadastro extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -59,6 +59,7 @@ public class Er_Cadastro extends JFrame {
 	boolean escola = false;
 	boolean professor = false;
 	boolean monitor = false;
+	int mat;
 	/**
 	 * Launch the application.
 	 */
@@ -66,10 +67,10 @@ public class Er_Cadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Er_Cadastro frame = new Er_Cadastro();
+					Sucesso_Cadastro frame = new Sucesso_Cadastro();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
-					frame.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
+					frame.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,12 +81,12 @@ public class Er_Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Er_Cadastro() {
+	public Sucesso_Cadastro() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(490, 190, 379, 379);
+		setBounds(490, 190, 379, 400);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
@@ -106,17 +107,17 @@ public class Er_Cadastro extends JFrame {
 		Btn_minimize.setBorderPainted(false);
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
-		Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -166,7 +167,7 @@ public class Er_Cadastro extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Er_Cadastro.this.setLocation(x - xx, y - xy);
+		        Sucesso_Cadastro.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -177,13 +178,13 @@ public class Er_Cadastro extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
-		JLabel Btn_tent = new JLabel("");
-		Btn_tent.setBounds(20, 258, 341, 51);
-		Container_principal.add(Btn_tent);
-		Btn_tent.addMouseListener(new MouseAdapter() {
+		JLabel Btn_flogin = new JLabel("");
+		Btn_flogin.setBounds(45, 362, 341, 51);
+		Container_principal.add(Btn_flogin);
+		Btn_flogin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_tent.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_tent_hover.png")));
+				Btn_flogin.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_flogin_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
@@ -214,23 +215,40 @@ public class Er_Cadastro extends JFrame {
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_tent.setIcon(new ImageIcon(Er_Login.class.getResource("/Imagens/Bot\u00F5es/btn_tent.png")));
+				Btn_flogin.setIcon(new ImageIcon(Er_Login.class.getResource("/Imagens/Bot\u00F5es/btn_flogin.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		Btn_tent.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_tent.png")));
+		Btn_flogin.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_flogin.png")));
 		
 		
-		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Cenas/fundoer_cad.png")));
-		Fundo.setBounds(10, 22, 379, 379);
-		Container_principal.add(Fundo);
+		JTextPane Matricula = new JTextPane();
+		Matricula.setAlignmentY(CENTER_ALIGNMENT);
+		Matricula.setBackground(new Color(18,192,106));
+		Matricula.setForeground(Color.WHITE);
+		Matricula.setFont(new Font("Big John PRO Bold", Font.PLAIN, 28));
+		Matricula.setEditable(false);
+		Matricula.setText("\r\nSUA MATR\u00CDCULA \u00C9: \n" + mat);
+		Matricula.setBounds(54, 257, 315, 94);
+		Container_principal.add(Matricula);
 		
 		JLabel Astronauta = new JLabel("");
 		Astronauta.setBackground(null);
-		Astronauta.setBounds(10, 48, 379, 258);
-		Astronauta.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Cenas/cavae.gif")));
+		Astronauta.setBounds(10, 75, 379, 258);
+		Astronauta.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Cenas/certo.gif")));
 		Container_principal.add(Astronauta);
+		
+		
+		JLabel Fundo = new JLabel("");
+		Fundo.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Cenas/fundosu_cad.png")));
+		Fundo.setBounds(10, 22, 379, 379);
+		Container_principal.add(Fundo);
+		
+		JLabel Fundo2 = new JLabel("");
+		Fundo2.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Cenas/certo.gif")));
+		Fundo2.setBackground((Color) null);
+		Fundo2.setBounds(10, 172, 379, 258);
+		Container_principal.add(Fundo2);
 	}
 }

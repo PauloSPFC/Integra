@@ -158,7 +158,6 @@ public class Er_Login extends JFrame {
 				if (escola == true) {
 					Login_Escola l = new Login_Escola();
 					l.setUndecorated(true);
-					l.setVisible(true);
 					l.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					l.setVisible(true);
@@ -166,7 +165,6 @@ public class Er_Login extends JFrame {
 				} else if (professor == true) {
 					Login_Professor p = new Login_Professor();
 					p.setUndecorated(true);
-					p.setVisible(true);
 					p.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					p.setVisible(true);
@@ -174,7 +172,6 @@ public class Er_Login extends JFrame {
 				} else if (monitor == true) {
 					Login_Monitor m = new Login_Monitor();
 					m.setUndecorated(true);
-					m.setVisible(true);
 					m.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
 					m.setVisible(true);

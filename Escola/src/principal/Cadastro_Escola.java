@@ -339,8 +339,21 @@ public class Cadastro_Escola extends JFrame {
 				}
 				
 				if (ed.checkCadastro(nome) || cadastra == false) {
-					Btn_minimize.setVisible(false);
+					Er_Cadastro erc = new Er_Cadastro();
+					erc.escola = true;
+					erc.setUndecorated(true);
+					erc.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
+					dispose();
+					erc.setVisible(true);
+					
 				} else {
+					Sucesso_Cadastro suc = new Sucesso_Cadastro();
+					suc.escola = true;
+					suc.setUndecorated(true);
+					suc.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
+					suc.mat = matricula;
+					dispose();
+					suc.setVisible(true);
 					ed.inserir(e);
 				}
 				
