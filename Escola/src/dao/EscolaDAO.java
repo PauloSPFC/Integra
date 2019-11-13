@@ -117,6 +117,7 @@ public class EscolaDAO {
 		boolean check = false;
 		
 		String sql = "SELECT * FROM escola WHERE nome = ?";
+		
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		
@@ -136,7 +137,9 @@ public class EscolaDAO {
 	
 	public boolean checkMatricula (int matricula) {
 		boolean check = false;
+		
 		String sql = "SELECT * FROM escola WHERE matricula = ?";
+		
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 		

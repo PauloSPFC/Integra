@@ -52,6 +52,7 @@ import java.awt.event.KeyEvent;
 
 public class Sucesso_Cadastro extends JFrame {
 
+
 	private JPanel contentPane;
 	
 	int xx;
@@ -59,7 +60,7 @@ public class Sucesso_Cadastro extends JFrame {
 	boolean escola = false;
 	boolean professor = false;
 	boolean monitor = false;
-	int mat;
+	JTextPane Matricula = new JTextPane();
 	/**
 	 * Launch the application.
 	 */
@@ -222,14 +223,11 @@ public class Sucesso_Cadastro extends JFrame {
 		});
 		Btn_flogin.setIcon(new ImageIcon(Sucesso_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_flogin.png")));
 		
-		
-		JTextPane Matricula = new JTextPane();
 		Matricula.setAlignmentY(CENTER_ALIGNMENT);
 		Matricula.setBackground(new Color(18,192,106));
 		Matricula.setForeground(Color.WHITE);
 		Matricula.setFont(new Font("Big John PRO Bold", Font.PLAIN, 28));
 		Matricula.setEditable(false);
-		Matricula.setText("\r\nSUA MATR\u00CDCULA \u00C9: \n" + mat);
 		Matricula.setBounds(54, 257, 315, 94);
 		Container_principal.add(Matricula);
 		

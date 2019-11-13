@@ -56,7 +56,7 @@ public class Cadastro_Escola extends JFrame {
 	int xx;
 	int xy;
 	private JTextField Inp_nome;
-	private int matricula;
+	public int matricula;
 	private String nome;
 	private String rua;
 	private int nro;
@@ -324,6 +324,7 @@ public class Cadastro_Escola extends JFrame {
 				matricula = 1000 + rnd.nextInt(10000 - 1000);
 
 				Escola e = new Escola(matricula,nome,rua,nro,bairro, cidade,tel,estado);
+				
 				while (ed.checkMatricula(matricula) == true) {
 					matricula = 1000 + rnd.nextInt(10000 - 1000);
 					System.out.println(matricula);
@@ -351,8 +352,8 @@ public class Cadastro_Escola extends JFrame {
 					suc.escola = true;
 					suc.setUndecorated(true);
 					suc.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
-					suc.mat = matricula;
 					dispose();
+					suc.Matricula.setText("\r\nSUA MATR\u00CDCULA \u00C9: \n" + matricula);
 					suc.setVisible(true);
 					ed.inserir(e);
 				}
