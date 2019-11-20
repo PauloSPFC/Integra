@@ -59,6 +59,9 @@ public class Er_Login extends JFrame {
 	boolean escola = false;
 	boolean professor = false;
 	boolean monitor = false;
+	boolean c_escola = false;
+	boolean c_monitor = false;
+	boolean c_professor = false;
 	/**
 	 * Launch the application.
 	 */
@@ -155,7 +158,29 @@ public class Er_Login extends JFrame {
 		Btn_voltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (escola == true) {
+				if (c_escola == true) {
+					Cadastro_Escola ce = new Cadastro_Escola();
+					ce.setUndecorated(true);
+					ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					dispose();
+					ce.setVisible(true);
+					escola = false;
+				} else if (c_professor == true) {
+					Cadastro_Professor cp = new Cadastro_Professor();
+					cp.setUndecorated(true);
+					cp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					dispose();
+					cp.setVisible(true);
+					professor = false;
+				} else if (c_monitor == true) {
+					Cadastro_Monitor cm = new Cadastro_Monitor();
+					cm.setUndecorated(true);
+					cm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					dispose();
+					cm.setVisible(true);
+					monitor = false;
+				}
+				else if (escola == true) {
 					Login_Escola l = new Login_Escola();
 					l.setUndecorated(true);
 					l.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));

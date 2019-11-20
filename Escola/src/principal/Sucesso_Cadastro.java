@@ -192,11 +192,11 @@ public class Sucesso_Cadastro extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				if (escola == true) {
-					Cadastro_Escola ce = new Cadastro_Escola();
-					ce.setUndecorated(true);
-					ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					Login_Escola le = new Login_Escola();
+					le.setUndecorated(true);
+					le.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();
-					ce.setVisible(true);
+					le.setVisible(true);
 					escola = false;
 				} else if (professor == true) {
 					Login_Professor p = new Login_Professor();
@@ -226,7 +226,7 @@ public class Sucesso_Cadastro extends JFrame {
 		Matricula.setAlignmentY(CENTER_ALIGNMENT);
 		Matricula.setBackground(new Color(18,192,106));
 		Matricula.setForeground(Color.WHITE);
-		Matricula.setFont(new Font("Big John PRO Bold", Font.PLAIN, 28));
+		Matricula.setFont(new Font("Big John PRO Bold", Font.PLAIN, 27));
 		Matricula.setEditable(false);
 		Matricula.setBounds(54, 257, 315, 94);
 		Container_principal.add(Matricula);

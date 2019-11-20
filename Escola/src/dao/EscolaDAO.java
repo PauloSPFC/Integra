@@ -21,7 +21,7 @@ public class EscolaDAO {
 			stmt.setInt(1, es.getMatricula());
 			stmt.setString(2, es.getNome());
 			stmt.setString(3, es.getRua());
-			stmt.setInt(4, es.getNro());
+			stmt.setString(4, es.getNro());
 			stmt.setString(5, es.getBairro());
 			stmt.setString(6, es.getCidade());
 			stmt.setString(7, es.getTel());
@@ -45,7 +45,7 @@ public class EscolaDAO {
 				escola.setMatricula(rs.getInt("matricula"));
 				escola.setNome(rs.getString("nome"));
 				escola.setRua(rs.getString("rua"));
-				escola.setNro(rs.getInt("nro"));
+				escola.setNro(rs.getString("nro"));
 				escola.setBairro(rs.getString("bairro"));
 				escola.setCidade(rs.getString("cidade"));
 				escola.setTel(rs.getString("tel"));
@@ -80,7 +80,7 @@ public class EscolaDAO {
 			stmt.setInt(1, escola.getMatricula());
 			stmt.setString(2, escola.getNome());
 			stmt.setString(3, escola.getRua());
-			stmt.setInt(4, escola.getNro());
+			stmt.setString(4, escola.getNro());
 			stmt.setString(5, escola.getBairro());
 			stmt.setString(6, escola.getTel());
 			stmt.setString(7, escola.getCidade());

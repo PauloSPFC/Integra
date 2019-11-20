@@ -59,7 +59,7 @@ public class Cadastro_Escola extends JFrame {
 	public int matricula;
 	private String nome;
 	private String rua;
-	private int nro;
+	private String nro;
 	private String bairro;
 	private String cidade;
 	private String tel;
@@ -271,7 +271,7 @@ public class Cadastro_Escola extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {				
 				nome = Inp_nome.getText();
 				rua = Inp_rua.getText();
-				nro = Integer.parseInt(Inp_nro.getText());
+				String teste_nro = Inp_nro.getText();									
 				bairro = Inp_bairro.getText();
 				cidade = Inp_cidade.getText();
 				tel = Inp_telefone.getText();
@@ -279,47 +279,23 @@ public class Cadastro_Escola extends JFrame {
 				EscolaDAO ed = new EscolaDAO();
 				
 				//Validações
+								
+				//Verifica Numero
 				
-					//Nome
-				
-				String erro1 = "O campo nome só deve possuir letras";
-				
-				String guarda = Inp_nome.getText();
-				for(Character c : nome.toCharArray())
-				{
-				    if (c.isDigit(c))
-				   {
-				      cadastra = false;		
-				      Inp_nome.setForeground(new Color(255, 128, 128));
-				      Inp_nome.setText(erro1);							 
-				      
-				      Inp_nome.addMouseListener(new MouseAdapter() {
-							@Override
-							public void mouseClicked(MouseEvent e) {
-								Inp_nome.setText(guarda);
-								Inp_nome.setForeground(Color.BLACK);
-							}
-					  }); 				 
-				     
-				   } else {
-					   cadastra = true;
-				   }
+				char[] n = teste_nro.toCharArray();
+
+				for ( int i = 0; i < n.length; i++ ) {
+				    // verifica se o char não é um dígito
+				    if ( !Character.isDigit( n[ i ] ) ) {
+				        cadastra = false;
+				        break;
+				    } else {
+				    	nro = teste_nro;
+				    }
 				}
 				
-					//Numero
-				
-				String erro2 = "O campo número só deve possuir números";
-				
-				String valorTextField;
-				int valorIntegerTextField;
-				try{
-				    valorTextField = Inp_nro.getText();
-				    valorIntegerTextField = Integer.parseInt(valorTextField);				    
-				}catch(NumberFormatException e){
-				    cadastra = false;
-				}
-											
 				//GERA MATRICULA
+				
 				Random rnd = new Random();
 				matricula = 1000 + rnd.nextInt(10000 - 1000);
 
@@ -329,17 +305,22 @@ public class Cadastro_Escola extends JFrame {
 					matricula = 1000 + rnd.nextInt(10000 - 1000);
 					System.out.println(matricula);
 					break;
+				}			
+				
+				//
+				
+				if (cadastra == false) {
+					Er_Login erl = new Er_Login();
+					erl.c_escola = true;
+					erl.setUndecorated(true);
+					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
+					dispose();
+					erl.setVisible(true);
 				}
 				
-				if (Inp_nome.getText().equals(erro1)) {
-					cadastra = false;
-				}
 				
-				if (Inp_nro.getText().equals(erro2)) {
-					cadastra = false;
-				}
-				
-				if (ed.checkCadastro(nome) || cadastra == false) {
+				else if (ed.checkCadastro(nome)) {
+					
 					Er_Cadastro erc = new Er_Cadastro();
 					erc.escola = true;
 					erc.setUndecorated(true);
@@ -353,7 +334,7 @@ public class Cadastro_Escola extends JFrame {
 					suc.setUndecorated(true);
 					suc.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
 					dispose();
-					suc.Matricula.setText("\r\nSUA MATR\u00CDCULA \u00C9: \n" + matricula);
+					suc.Matricula.setText("\r\nSUA MATR\u00CDCULA \u00C9: \n               " + matricula);
 					suc.setVisible(true);
 					ed.inserir(e);
 				}

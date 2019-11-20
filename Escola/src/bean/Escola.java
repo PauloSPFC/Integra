@@ -4,13 +4,13 @@ public class Escola {
 	private int matricula;
 	private String nome;
 	private String rua;
-	private int nro;
+	private String nro;
 	private String bairro;
 	private String cidade;
 	private String tel;
 	private String estado;
 	
-	public Escola(int matricula, String nome, String rua, int nro, String bairro, String cidade, String tel, String estado) {
+	public Escola(int matricula, String nome, String rua, String nro, String bairro, String cidade, String tel, String estado) {
 		this.matricula = matricula;
 		this.nome = nome;
 		this.rua = rua;
@@ -49,11 +49,11 @@ public class Escola {
 		this.rua = rua;
 	}
 
-	public int getNro() {
+	public String getNro() {
 		return nro;
 	}
 
-	public void setNro(int nro) {
+	public void setNro(String nro) {
 		this.nro = nro;
 	}
 
