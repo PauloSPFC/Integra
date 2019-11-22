@@ -9,30 +9,29 @@ import bean.Monitor;
 
 public class MonitorDAO {
 	private Connection connection;
-	
+
 	public MonitorDAO() {
 		connection = new FabricaConexoes().getConnection();
 	}
-	
+
 	public void inserir(Monitor m) {
-		String sql = "INSERT INTO Monitor(cpf,nome,salario,tel,rua,nro,bairro,cidade) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO Monitor(cpf,nome,tel,rua,nro,bairro,cidade) VALUES (?, ?, ?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, m.getCpf());
+			stmt.setString(1, m.getCpf());
 			stmt.setString(2, m.getNome());
-			stmt.setDouble(3, m.getSalario());
-			stmt.setInt(4, m.getTel());
-			stmt.setString(5, m.getRua());
-			stmt.setInt(6, m.getNro());
-			stmt.setString(7, m.getBairro());
-			stmt.setString(8, m.getCidade());
+			stmt.setString(3, m.getTel());
+			stmt.setString(4, m.getRua());
+			stmt.setString(5, m.getNro());
+			stmt.setString(6, m.getBairro());
+			stmt.setString(7, m.getCidade());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public ArrayList<Monitor> getLista() {
 		String sql = "SELECT * FROM Monitor";
 		PreparedStatement stmt;
@@ -42,12 +41,11 @@ public class MonitorDAO {
 			ArrayList<Monitor> monitores = new ArrayList<>();
 			while (rs.next()) {
 				Monitor monitor = new Monitor();
-				monitor.setCpf(rs.getInt("cpf"));
+				monitor.setCpf(rs.getString("cpf"));
 				monitor.setNome(rs.getString("nome"));
-				monitor.setSalario(rs.getDouble("salario"));
-				monitor.setTel(rs.getInt("tel"));
+				monitor.setTel(rs.getString("tel"));
 				monitor.setRua(rs.getString("rua"));
-				monitor.setNro(rs.getInt("nro"));
+				monitor.setNro(rs.getString("nro"));
 				monitor.setBairro(rs.getString("bairro"));
 				monitor.setCidade(rs.getString("cidade"));
 				monitor.add(monitor);
@@ -60,29 +58,28 @@ public class MonitorDAO {
 		}
 		return null;
 	}
-	
+
 	public void remover(Monitor monitor) {
 		try {
 			String sql = "DELETE FROM Escola where codigo = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setLong(1, monitor.getCpf());
+			stmt.setString(1, monitor.getCpf());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void alterar (Monitor monitor) {
-		String sql = "UPDATE Monitor SET nome = ?,salario = ?, tel= ?, rua = ?, nro = ?, bairro = ?, cidade = ? WHERE cpf = ?";
+		String sql = "UPDATE Monitor SET nome = ?, tel= ?, rua = ?, nro = ?, bairro = ?, cidade = ? WHERE cpf = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, monitor.getCpf());
+			stmt.setString(1, monitor.getCpf());
 			stmt.setString(2, monitor.getNome());
-			stmt.setDouble(3, monitor.getSalario());
-			stmt.setInt(4, monitor.getTel());
+			stmt.setString(4, monitor.getTel());
 			stmt.setString(5, monitor.getRua());
-			stmt.setInt(6, monitor.getNro());
+			stmt.setString(6, monitor.getNro());
 			stmt.setString(7, monitor.getBairro());
 			stmt.setString(8, monitor.getCidade());
 			stmt.execute();
@@ -91,4 +88,47 @@ public class MonitorDAO {
 			e.printStackTrace();
 		}
 		}
+
+	public boolean checkLogin (String cpf, String senha) {
+		boolean check = false;
+		String sql = "SELECT * FROM escola WHERE nome = ? and matricula = ?";
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+			stmt.setString(2, senha);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+
+	public boolean checkCadastro (String cpf) {
+		boolean check = false;
+
+		String sql = "SELECT * FROM monitor WHERE cpf = ?";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
 	}

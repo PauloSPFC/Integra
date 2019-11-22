@@ -1,23 +1,21 @@
 package bean;
 
 public class Monitor {
-	private int cpf;
+	private String cpf;
 	private String nome;
-	private double salario;
-	private int tel;
+	private String tel;
 	private String rua;
-	private int nro;
+	private String nro;
 	private String bairro;
 	private String cidade;
-	
+
 	public Monitor() {
-		
+
 	}
-	
-	public Monitor(int cpf, String nome, double salario, int tel, String rua, int nro, String bairro, String cidade) {
+
+	public Monitor(String cpf, String nome, String tel, String rua, String nro, String bairro, String cidade) {
 		this.cpf = cpf;
 		this.nome = nome;
-		this.salario = salario;
 		this.tel = tel;
 		this.rua = rua;
 		this.nro = nro;
@@ -25,11 +23,11 @@ public class Monitor {
 		this.cidade = cidade;
 	}
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -41,19 +39,11 @@ public class Monitor {
 		this.nome = nome;
 	}
 
-	public double getSalario() {
-		return salario;
-	}
-
-	public void setSalario(double salario) {
-		this.salario = salario;
-	}
-
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 
@@ -65,11 +55,11 @@ public class Monitor {
 		this.rua = rua;
 	}
 
-	public int getNro() {
+	public String getNro() {
 		return nro;
 	}
 
-	public void setNro(int nro) {
+	public void setNro(String nro) {
 		this.nro = nro;
 	}
 
@@ -91,14 +81,14 @@ public class Monitor {
 
 	@Override
 	public String toString() {
-		return "Monitor [cpf=" + cpf + ", nome=" + nome + ", salario=" + salario + ", tel=" + tel + ", rua=" + rua
+		return "Monitor [cpf=" + cpf + ", nome=" + nome + ", tel=" + tel + ", rua=" + rua
 				+ ", nro=" + nro + ", bairro=" + bairro + ", cidade=" + cidade + "]";
 	}
 
 	public void add(Monitor monitor) {
 
-		
+
 	}
 
-	
+
 }

@@ -28,6 +28,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
 
 import dao.EscolaDAO;
+import dao.MonitorDAO;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
@@ -53,7 +54,7 @@ import java.awt.event.KeyEvent;
 public class Login_Monitor extends JFrame {
 
 	private JPanel contentPane;
-	
+
 	int xx;
 	int xy;
 	private JTextField inp_cpf;
@@ -91,14 +92,14 @@ public class Login_Monitor extends JFrame {
 		contentPane.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		final Action minimizeAction = new AbstractAction("Minimize") {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setState(JFrame.ICONIFIED);
-			}			
+			}
 		};
-		
+
 		JButton Btn_minimize = new JButton(minimizeAction);
 		Btn_minimize.setBounds(321, -2, 20, 28);
 		contentPane.add(Btn_minimize);
@@ -111,17 +112,17 @@ public class Login_Monitor extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				Btn_minimize.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Btn_minimize.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
+
 		JLabel Btn_fechar = new JLabel("");
 		Btn_fechar.setBounds(342, -4, 38, 32);
 		contentPane.add(Btn_fechar);
@@ -137,17 +138,17 @@ public class Login_Monitor extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				Btn_fechar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Btn_fechar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
+
 		JLabel Btn_voltar = new JLabel("");
 		Btn_voltar.setBounds(4, 6, 16, 13);
 		contentPane.add(Btn_voltar);
@@ -165,17 +166,17 @@ public class Login_Monitor extends JFrame {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				Btn_voltar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/voltar_hover.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Btn_voltar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
+
 		JLabel Lbl_mousemove = new JLabel("");
 		Lbl_mousemove.setBounds(-10, 0, 390, 28);
 		contentPane.add(Lbl_mousemove);
@@ -187,24 +188,24 @@ public class Login_Monitor extends JFrame {
 		        xy = e.getY();
 			}
 		});
-		
+
 		Lbl_mousemove.addMouseMotionListener(new MouseMotionAdapter() {
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
-		        
+
 		        Login_Monitor.this.setLocation(x - xx, y - xy);
 			}
 		});
-		
+
 		JPanel Container_principal = new JPanel();
 		Container_principal.setBounds(-10, -22, 990, 662);
 		Container_principal.setBorder(new TitledBorder(null, "", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		Container_principal.setBackground(Color.DARK_GRAY);
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
-		
+
 		inp_cpf = new JTextField();
 		inp_cpf.setToolTipText("");
 		inp_cpf.setForeground(Color.DARK_GRAY);
@@ -215,8 +216,8 @@ public class Login_Monitor extends JFrame {
 		inp_cpf.setColumns(10);
 		inp_cpf.setBorder(null);
 		inp_cpf.setEnabled(true);
-		
-		
+
+
 		inp_senha = new JPasswordField();
 		inp_senha.setColumns(10);
 		inp_senha.setForeground(Color.DARK_GRAY);
@@ -225,8 +226,8 @@ public class Login_Monitor extends JFrame {
 		inp_senha.setBorder(null);
 		inp_senha.setEnabled(true);
 		Container_principal.add(inp_senha);
-		
-		
+
+
 		JLabel Ver = new JLabel("");
 		Ver.setVisible(false);
 		Ver.setBackground(SystemColor.text);
@@ -254,21 +255,21 @@ public class Login_Monitor extends JFrame {
 					inp_senha.setEchoChar('\u2022');
 					Ver.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/ver_m.png")));
 				}
-				
-				
+
+
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
+
 		JLabel Btn_Entrar = new JLabel("");
 		Btn_Entrar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Botões/entrar_m.png")));
 		Btn_Entrar.setBounds(120, 528, 162, 49);
@@ -276,11 +277,10 @@ public class Login_Monitor extends JFrame {
 		Btn_Entrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String nome = inp_cpf.getText();
-				String matricula = inp_senha.getText();
-				EscolaDAO escola = new EscolaDAO();
-				System.out.println(escola.checkLogin(nome, matricula));
-				if (escola.checkLogin(nome, matricula)) {
+				String cpf = inp_cpf.getText();
+				String senha = inp_senha.getText();
+				MonitorDAO monitor = new MonitorDAO();
+				if (monitor.checkLogin(cpf, senha)) {
 					Btn_minimize.setVisible(false);
 				} else {
 					dispose();
@@ -288,24 +288,23 @@ public class Login_Monitor extends JFrame {
 					er.setUndecorated(true);
 					er.setVisible(true);
 					er.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
-					er.monitor = true;		
+					er.monitor = true;
 				}
-				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
 				Btn_Entrar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/entrar_hover.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
 				Btn_Entrar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Bot\u00F5es/entrar_m.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
+
 		JLabel Btn_Cadastrar = new JLabel("");
 		Btn_Cadastrar.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Botões/cadastrar.png")));
 		Btn_Cadastrar.setBounds(230, 577, 152, 36);
@@ -330,8 +329,8 @@ public class Login_Monitor extends JFrame {
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		
-		
+
+
 		JLabel Fundo = new JLabel("");
 		Fundo.setBounds(10, 22, 379, 591);
 		Fundo.setIcon(new ImageIcon(Login_Monitor.class.getResource("/Imagens/Cenas/login_monitor.jpg")));
