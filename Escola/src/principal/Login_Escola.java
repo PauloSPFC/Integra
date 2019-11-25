@@ -280,7 +280,11 @@ public class Login_Escola extends JFrame {
 				String matricula = inp_mat.getText();
 				EscolaDAO escola = new EscolaDAO();
 				if (escola.checkLogin(nome, matricula)) {
-					Btn_minimize.setVisible(false);
+					dispose();
+					P_Escola p = new P_Escola();
+					p.setUndecorated(true);
+					p.setVisible(true);
+					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 				} else {
 					dispose();
 					Er_Login er = new Er_Login();

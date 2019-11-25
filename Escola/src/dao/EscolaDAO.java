@@ -63,9 +63,21 @@ public class EscolaDAO {
 	
 	public void remover(Escola escola) {
 		try {
-			String sql = "DELETE FROM Escola where codigo = ?";
+			String sql = "DELETE FROM Escola where matricula = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setLong(1, escola.getMatricula());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removerMatricula(int matricula) {
+		try {
+			String sql = "DELETE FROM Escola where matricula = ?";
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setInt(1, matricula);			
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -77,14 +89,14 @@ public class EscolaDAO {
 		String sql = "UPDATE Escola SET nome = ?,rua = ?, nro= ?, bairro = ?, tel = ?, cidade = ?, estado = ? WHERE matricula = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, escola.getMatricula());
-			stmt.setString(2, escola.getNome());
-			stmt.setString(3, escola.getRua());
-			stmt.setString(4, escola.getNro());
-			stmt.setString(5, escola.getBairro());
-			stmt.setString(6, escola.getTel());
-			stmt.setString(7, escola.getCidade());
-			stmt.setString(8, escola.getEstado());
+			stmt.setString(1, escola.getNome());
+			stmt.setString(2, escola.getRua());
+			stmt.setString(3, escola.getNro());
+			stmt.setString(4, escola.getBairro());
+			stmt.setString(5, escola.getTel());
+			stmt.setString(6, escola.getCidade());
+			stmt.setString(7, escola.getEstado());
+			stmt.setInt(8, escola.getMatricula());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {

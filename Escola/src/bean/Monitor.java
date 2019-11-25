@@ -1,6 +1,7 @@
 package bean;
 
 public class Monitor {
+	private int senha;
 	private String cpf;
 	private String nome;
 	private String tel;
@@ -13,7 +14,8 @@ public class Monitor {
 
 	}
 
-	public Monitor(String cpf, String nome, String tel, String rua, String nro, String bairro, String cidade) {
+	public Monitor(int senha,String cpf, String nome, String tel, String rua, String nro, String bairro, String cidade) {
+		this.senha = senha;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.tel = tel;
@@ -78,10 +80,18 @@ public class Monitor {
 	public void setCidade(String cidade) {
 		this.cidade = cidade;
 	}
+	
+	public int getSenha() {
+		return senha;
+	}
+
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
 
 	@Override
 	public String toString() {
-		return "Monitor [cpf=" + cpf + ", nome=" + nome + ", tel=" + tel + ", rua=" + rua
+		return "Monitor [senha=" + senha + ", cpf=" + cpf + ", nome=" + nome + ", tel=" + tel + ", rua=" + rua
 				+ ", nro=" + nro + ", bairro=" + bairro + ", cidade=" + cidade + "]";
 	}
 

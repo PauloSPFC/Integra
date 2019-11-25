@@ -15,7 +15,7 @@ public class MonitorDAO {
 	}
 
 	public void inserir(Monitor m) {
-		String sql = "INSERT INTO Monitor(cpf,nome,tel,rua,nro,bairro,cidade) VALUES (?, ?, ?, ?, ?, ?, ?);";
+		String sql = "INSERT INTO Monitor(cpf,nome,tel,rua,nro,bairro,cidade,senha) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setString(1, m.getCpf());
@@ -25,6 +25,7 @@ public class MonitorDAO {
 			stmt.setString(5, m.getNro());
 			stmt.setString(6, m.getBairro());
 			stmt.setString(7, m.getCidade());
+			stmt.setInt(8, m.getSenha());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -48,6 +49,7 @@ public class MonitorDAO {
 				monitor.setNro(rs.getString("nro"));
 				monitor.setBairro(rs.getString("bairro"));
 				monitor.setCidade(rs.getString("cidade"));
+				monitor.setSenha(rs.getInt("senha"));
 				monitor.add(monitor);
 			}
 			rs.close();
@@ -61,7 +63,7 @@ public class MonitorDAO {
 
 	public void remover(Monitor monitor) {
 		try {
-			String sql = "DELETE FROM Escola where codigo = ?";
+			String sql = "DELETE FROM Monitor where cpf = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setString(1, monitor.getCpf());
 			stmt.execute();
@@ -82,6 +84,7 @@ public class MonitorDAO {
 			stmt.setString(6, monitor.getNro());
 			stmt.setString(7, monitor.getBairro());
 			stmt.setString(8, monitor.getCidade());
+			stmt.setInt(9, monitor.getSenha());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -91,7 +94,7 @@ public class MonitorDAO {
 
 	public boolean checkLogin (String cpf, String senha) {
 		boolean check = false;
-		String sql = "SELECT * FROM escola WHERE nome = ? and matricula = ?";
+		String sql = "SELECT * FROM monitor WHERE cpf = ? and senha = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 
@@ -109,6 +112,51 @@ public class MonitorDAO {
 		}
 		return check;
 	}
+	
+	public String geraMonitor() {
+		
+		String cpf = "";	
+		String sql = "SELECT cpf FROM monitor ORDER BY RAND() LIMIT 1";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				cpf = rs.getString("cpf");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return cpf;
+		
+	}
+	
+public String getNome(String cpf) {
+		
+		String nome = "";	
+		String sql = "SELECT nome FROM monitor WHERE cpf = ?";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+			
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				nome = rs.getString("nome");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nome;
+		
+	}
+	
 
 	public boolean checkCadastro (String cpf) {
 		boolean check = false;
@@ -131,4 +179,26 @@ public class MonitorDAO {
 		}
 		return check;
 	}
+	
+	public boolean checkSenha (int senha) {
+		boolean check = false;
+		
+		String sql = "SELECT * FROM monitor WHERE cpf = ?";
+		
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+		
+			stmt.setInt(1, senha);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
 	}
+}

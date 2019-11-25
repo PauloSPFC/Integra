@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 8.0.13, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.17, for Win64 (x86_64)
 --
 -- Host: localhost    Database: projetodb
 -- ------------------------------------------------------
--- Server version	8.0.13
+-- Server version	8.0.16
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -21,7 +21,7 @@
 
 DROP TABLE IF EXISTS `monitor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `monitor` (
   `cpf` varchar(20) NOT NULL,
   `nome` varchar(50) DEFAULT NULL,
@@ -30,6 +30,7 @@ CREATE TABLE `monitor` (
   `bairro` varchar(25) DEFAULT NULL,
   `cidade` varchar(25) DEFAULT NULL,
   `rua` varchar(50) DEFAULT NULL,
+  `senha` varchar(4) DEFAULT NULL,
   PRIMARY KEY (`cpf`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -40,7 +41,7 @@ CREATE TABLE `monitor` (
 
 LOCK TABLES `monitor` WRITE;
 /*!40000 ALTER TABLE `monitor` DISABLE KEYS */;
-INSERT INTO `monitor` VALUES ('16208700884','Julia','1','1','1','1','1');
+INSERT INTO `monitor` VALUES ('12345678910','NEVER','34199747','200','Jockey','São Carlos','Nove','1341'),('16208700884','Julia','1','1','1','1','1',NULL),('49090451803','Paulo','33510120','2541','Jockey Club','São Carlos','Rio Negro',NULL);
 /*!40000 ALTER TABLE `monitor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-22 16:31:23
+-- Dump completed on 2019-11-25  1:06:45

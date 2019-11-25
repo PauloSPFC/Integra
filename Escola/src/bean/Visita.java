@@ -1,6 +1,7 @@
 package bean;
 
 public class Visita {
+	private String nome_escola;
 	private int cod_visita;
 	private String monitor;
 	private String professor;
@@ -13,7 +14,8 @@ public class Visita {
 		
 	}
 	
-	public Visita(int cod_visita, String monitor, String professor, int cod_trajeto, String data_visita, String horario_visita, int nro_alunos) {
+	public Visita(String nome_escola,int cod_visita, String monitor, String professor, int cod_trajeto, String data_visita, String horario_visita, int nro_alunos) {
+		this.nome_escola = nome_escola;
 		this.cod_visita = cod_visita;
 		this.monitor = monitor;
 		this.professor = professor;
@@ -77,6 +79,14 @@ public class Visita {
 
 	public void setCod_visita(int cod_visita) {
 		this.cod_visita = cod_visita;
+	}
+
+	public String getNome_escola() {
+		return nome_escola;
+	}
+
+	public void setNome_escola(String nome_escola) {
+		this.nome_escola = nome_escola;
 	}
 
 	
