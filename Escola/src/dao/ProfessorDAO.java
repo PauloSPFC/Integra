@@ -18,10 +18,10 @@ public class ProfessorDAO {
 		String sql = "INSERT INTO Professor(cpf,nome,matricula_escola,tel) VALUES (?, ?, ?, ?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, p.getCpf());
+			stmt.setString(1, p.getCpf());
 			stmt.setString(2, p.getNome());
 			stmt.setInt(3, p.getMatricula_escola());
-			stmt.setInt(4, p.getTel());
+			stmt.setString(4, p.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -38,10 +38,10 @@ public class ProfessorDAO {
 			ArrayList<Professor> professores = new ArrayList<>();
 			while (rs.next()) {
 				Professor professor = new Professor();
-				professor.setCpf(rs.getInt("cpf"));
+				professor.setCpf(rs.getString("cpf"));
 				professor.setNome(rs.getString("nome"));
 				professor.setMatricula_escola(rs.getInt("matricula_escola"));
-				professor.setTel(rs.getInt("tel"));
+				professor.setTel(rs.getString("tel"));
 				professor.add(professor);
 			}
 			rs.close();
@@ -57,7 +57,7 @@ public class ProfessorDAO {
 		try {
 			String sql = "DELETE FROM Professor where cpf = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setLong(1, professor.getCpf());
+			stmt.setString(1, professor.getCpf());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -69,14 +69,59 @@ public class ProfessorDAO {
 		String sql = "UPDATE Professor SET nome = ?,matricula_escola = ?, tel= ? WHERE cpf = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setInt(1, professor.getCpf());
+			stmt.setString(1, professor.getCpf());
 			stmt.setString(2, professor.getNome());
 			stmt.setInt(3, professor.getMatricula_escola());
-			stmt.setInt(4, professor.getTel());
+			stmt.setString(4, professor.getTel());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean checkSenha (int senha) {
+		boolean check = false;
+		
+		String sql = "SELECT * FROM professor WHERE cpf = ?";
+		
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+		
+			stmt.setInt(1, senha);
+			
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return check;
+	}
+	
+	public boolean checkCadastro (String cpf) {
+		boolean check = false;
+
+		String sql = "SELECT * FROM professor WHERE cpf = ?";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				check = true;
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return check;
+	}
+	
 	}

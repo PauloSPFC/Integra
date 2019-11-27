@@ -1,5 +1,9 @@
 package bean;
 
+/**
+ * @author IFSP
+ *
+ */
 public class Visita {
 	private String nome_escola;
 	private int cod_visita;
@@ -89,5 +93,15 @@ public class Visita {
 		this.nome_escola = nome_escola;
 	}
 
+	@Override
+	public String toString() {
+		return "Visita [nome_escola=" + nome_escola + ", cod_visita=" + cod_visita + ", monitor=" + monitor
+				+ ", professor=" + professor + ", cod_trajeto=" + cod_trajeto + ", data_visita=" + data_visita
+				+ ", horario_visita=" + horario_visita + ", nro_alunos=" + nro_alunos + "]";
+	}
+
+	
+	
+	
 	
 }

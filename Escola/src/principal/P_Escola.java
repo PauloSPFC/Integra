@@ -26,6 +26,9 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
+
+import dao.VisitaDAO;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
@@ -44,6 +47,7 @@ public class P_Escola extends JFrame {
 
 	private JPanel contentPane;
 	
+	String nome_escola;
 	int xx;
 	int xy;
 	/**
@@ -188,6 +192,13 @@ public class P_Escola extends JFrame {
 		JLabel btn_visitas = new JLabel("");
 		btn_visitas.setBounds(364, 247, 228, 227);
 		Container_principal.add(btn_visitas);
+		btn_visitas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				VisitaDAO vd = new VisitaDAO();
+				System.out.println(vd.getLista(nome_escola));
+			}
+		});
 		
 		JLabel btn_cadastrar = new JLabel("");
 		btn_cadastrar.setBounds(37, 247, 221, 227);

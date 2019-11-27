@@ -26,11 +26,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
+
+import bean.Monitor;
+import bean.Professor;
+import dao.EscolaDAO;
+import dao.MonitorDAO;
+import dao.ProfessorDAO;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.RoundRectangle2D;
+import java.util.Random;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -44,8 +52,13 @@ public class Cadastro_Professor extends JFrame {
 
 	private JPanel contentPane;
 	
+	private boolean cadastra = false;
 	int xx;
 	int xy;
+	private String cpf;
+	private String nome;
+	private int matricula;
+	private String tel;
 	private JTextField Inp_nome;
 	/**
 	 * Launch the application.
@@ -194,6 +207,34 @@ public class Cadastro_Professor extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
+		JTextField Inp_tel = new JTextField();
+		Inp_tel.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_tel.setBorder(null);
+		Inp_tel.setBounds(36, 405, 430, 29);
+		Container_principal.add(Inp_tel);
+		Inp_tel.setColumns(10);
+		
+		JTextField Inp_mat = new JTextField();
+		Inp_mat.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_mat.setBorder(null);
+		Inp_mat.setBounds(36, 326, 430, 29);
+		Container_principal.add(Inp_mat);
+		Inp_mat.setColumns(10);
+		
+		JTextField Inp_cpf = new JTextField();
+		Inp_cpf.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_cpf.setBorder(null);
+		Inp_cpf.setBounds(36, 245, 430, 29);
+		Container_principal.add(Inp_cpf);
+		Inp_cpf.setColumns(10);
+		
+		Inp_nome = new JTextField();
+		Inp_nome.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_nome.setBorder(null);
+		Inp_nome.setBounds(36, 167, 430, 29);
+		Container_principal.add(Inp_nome);
+		Inp_nome.setColumns(10);
+		
 		JLabel Btn_cad = new JLabel("");
 		Btn_cad.setIcon(new ImageIcon(Cadastro_Professor.class.getResource("/Imagens/Bot\u00F5es/btn_cad.png")));
 		Btn_cad.setBounds(88, 488, 320, 76);
@@ -211,35 +252,78 @@ public class Cadastro_Professor extends JFrame {
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				cpf = Inp_cpf.getText();
+				nome = Inp_nome.getText();
+				String teste_mat = Inp_mat.getText();
+				tel = Inp_tel.getText();
+				ProfessorDAO pd = new ProfessorDAO();
+
+				//Validações
+
+				//Verifica CPF
+
+				if (cpf.length() < 11) {
+					cadastra = false;
+				}
+
+				//Check Matricula
+				EscolaDAO ed = new EscolaDAO();
+				if (ed.checkMatricula(Integer.parseInt(teste_mat))) {
+					cadastra = true;
+					matricula = Integer.parseInt(teste_mat);
+				}
+				
+				
+				//GERA SENHA
+				
+				Random rnd = new Random();
+				int senha = 1000 + rnd.nextInt(10000 - 1000);
+				
+				while (pd.checkSenha(senha) == true) {
+					senha = 1000 + rnd.nextInt(10000 - 1000);
+					System.out.println(senha);
+					break;
+				}						
+				//
+
+
+				Professor p = new Professor(cpf,nome,matricula,tel);
+
+				if (cadastra == false) {
+					Er_Login erl = new Er_Login();
+					erl.c_professor = true;
+					erl.setUndecorated(true);
+					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
+					dispose();
+					erl.setVisible(true);
+					erl.c_professor = false;
+				}
+
+
+				else if (pd.checkCadastro(cpf)) {
+
+					Er_Cadastro erc = new Er_Cadastro();
+					erc.professor = true;
+					erc.setUndecorated(true);
+					erc.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
+					dispose();
+					erc.setVisible(true);
+
+				} else {
+					Sucesso_Cadastro suc = new Sucesso_Cadastro();
+					suc.professor = true;
+					suc.setUndecorated(true);
+					suc.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
+					dispose();
+					suc.Matricula.setText("\r\n    SUA SENHA É: \n               " + senha);
+					suc.setVisible(true);
+					pd.inserir(p);
+				}
+
+			}
 		});
-		
-		JTextField Inp_bairro = new JTextField();
-		Inp_bairro.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-		Inp_bairro.setBorder(null);
-		Inp_bairro.setBounds(36, 405, 430, 29);
-		Container_principal.add(Inp_bairro);
-		Inp_bairro.setColumns(10);
-		
-		JTextField Inp_nro = new JTextField();
-		Inp_nro.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-		Inp_nro.setBorder(null);
-		Inp_nro.setBounds(36, 326, 430, 29);
-		Container_principal.add(Inp_nro);
-		Inp_nro.setColumns(10);
-		
-		JTextField Inp_cpf = new JTextField();
-		Inp_cpf.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-		Inp_cpf.setBorder(null);
-		Inp_cpf.setBounds(36, 245, 430, 29);
-		Container_principal.add(Inp_cpf);
-		Inp_cpf.setColumns(10);
-		
-		Inp_nome = new JTextField();
-		Inp_nome.setFont(new Font("Century Gothic", Font.PLAIN, 16));
-		Inp_nome.setBorder(null);
-		Inp_nome.setBounds(36, 167, 430, 29);
-		Container_principal.add(Inp_nome);
-		Inp_nome.setColumns(10);
 		
 		JLabel Fundo = new JLabel("");
 		Fundo.setIcon(new ImageIcon(Cadastro_Professor.class.getResource("/Imagens/Cenas/Cadastro_Professor.jpg")));

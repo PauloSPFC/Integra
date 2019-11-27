@@ -1,29 +1,30 @@
 package bean;
 
 public class Professor {
-	private int cpf;
+	private String cpf;
 	private String nome;
 	private int matricula_escola;
-	private int tel;
+	private String tel;
 	
 	public Professor() {
 		
 	}
 	
-	public Professor(int cpf, String nome, int matricula_escola) {
+	public Professor(String cpf, String nome, int matricula_escola, String tel) {
 		super();
 		this.cpf = cpf;
 		this.nome = nome;
 		this.matricula_escola = matricula_escola;
+		this.tel = tel;
 	}
 
 
-	public int getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
 
-	public void setCpf(int cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -48,12 +49,12 @@ public class Professor {
 	}
 
 
-	public int getTel() {
+	public String getTel() {
 		return tel;
 	}
 
 
-	public void setTel(int tel) {
+	public void setTel(String tel) {
 		this.tel = tel;
 	}
 

@@ -33,13 +33,14 @@ public class VisitaDAO {
 		}
 	}
 	
-	public ArrayList<Visita> getLista() {
-		String sql = "SELECT * FROM Visita";
+	public ArrayList<Visita> getLista(String nome) {
+		ArrayList<Visita> visitas = new ArrayList<>();
+		String sql = "SELECT * FROM Visita WHERE nome_escola = ?";
 		PreparedStatement stmt;
-		try {
+		try {						
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, nome);
 			ResultSet rs = stmt.executeQuery();
-			ArrayList<Visita> visitas = new ArrayList<>();
 			while (rs.next()) {
 				Visita visita = new Visita();
 				visita.setMonitor(rs.getString("monitor"));
@@ -50,15 +51,14 @@ public class VisitaDAO {
 				visita.setNro_alunos(rs.getInt("nro_alunos"));
 				visita.setCod_visita(rs.getInt("cod_visita"));
 				visita.setNome_escola(rs.getString("nome_escola"));
-				visitas.add(visita);
+				visitas.add(visita);				
 			}
 			rs.close();
 			stmt.close();
-			return visitas;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return visitas;
 	}
 	
 	public void remover(Visita visita) {
@@ -135,4 +135,5 @@ public class VisitaDAO {
 		}
 		return check;
 	}
+	
 }

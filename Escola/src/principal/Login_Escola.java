@@ -285,6 +285,7 @@ public class Login_Escola extends JFrame {
 					p.setUndecorated(true);
 					p.setVisible(true);
 					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					p.nome_escola = nome;
 				} else {
 					dispose();
 					Er_Login er = new Er_Login();
