@@ -164,11 +164,10 @@ public class Atualiza_Escola extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Login_Escola le = new Login_Escola();
-				le.setUndecorated(true);
-				le.setVisible(true);
-				le.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));			
-				le.setVisible(true);
+				Config_Escola ce = new Config_Escola();
+				ce.setUndecorated(true);
+				ce.setVisible(true);
+				ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

@@ -285,12 +285,12 @@ public class Visitas extends JFrame {
 					cod.setEditable(false);
 					cod.setForeground(Color.WHITE);
 					cod.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
-					cod.setBounds(85, 218, 219, 36);
+					cod.setBounds(85, 207, 219, 48);
 					Container_principal.add(cod);
 					
 					JTextPane monitor = new JTextPane();
 					monitor.setOpaque(false);
-					monitor.setBounds(85, 363, 433, 36);
+					monitor.setBounds(85, 352, 433, 48);
 					Container_principal.add(monitor);
 					monitor.setForeground(Color.WHITE);
 					monitor.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
@@ -301,7 +301,7 @@ public class Visitas extends JFrame {
 					professor.setForeground(Color.WHITE);
 					professor.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					professor.setEditable(false);
-					professor.setBounds(108, 523, 410, 36);
+					professor.setBounds(108, 512, 410, 48);
 					Container_principal.add(professor);
 					
 					JTextPane escola = new JTextPane();
@@ -309,7 +309,7 @@ public class Visitas extends JFrame {
 					escola.setForeground(Color.WHITE);
 					escola.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					escola.setEditable(false);
-					escola.setBounds(637, 221, 343, 36);
+					escola.setBounds(637, 210, 343, 48);
 					Container_principal.add(escola);
 					
 					JTextPane alunos = new JTextPane();
@@ -317,7 +317,7 @@ public class Visitas extends JFrame {
 					alunos.setForeground(Color.WHITE);
 					alunos.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					alunos.setEditable(false);
-					alunos.setBounds(624, 363, 356, 36);
+					alunos.setBounds(624, 352, 356, 48);
 					Container_principal.add(alunos);
 					
 					JTextPane hora = new JTextPane();
@@ -325,7 +325,7 @@ public class Visitas extends JFrame {
 					hora.setForeground(Color.WHITE);
 					hora.setFont(new Font("Panton Black Caps", Font.PLAIN, 22));
 					hora.setEditable(false);
-					hora.setBounds(793, 499, 133, 29);
+					hora.setBounds(793, 488, 133, 39);
 					Container_principal.add(hora);
 					
 					JTextPane data = new JTextPane();
@@ -333,13 +333,13 @@ public class Visitas extends JFrame {
 					data.setForeground(Color.WHITE);
 					data.setFont(new Font("Panton Black Caps", Font.PLAIN, 22));
 					data.setEditable(false);
-					data.setBounds(609, 499, 133, 29);
+					data.setBounds(609, 488, 133, 39);
 					Container_principal.add(data);
 					
 					JTextPane trajeto = new JTextPane();
 					trajeto.setOpaque(false);
 					trajeto.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
-					trajeto.setBounds(327, 218, 38, 36);
+					trajeto.setBounds(327, 207, 38, 48);
 					Container_principal.add(trajeto);
 					
 					String nome_escola = ed.getNome(matricula);
