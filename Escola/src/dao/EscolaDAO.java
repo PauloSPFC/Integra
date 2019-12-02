@@ -168,4 +168,27 @@ public class EscolaDAO {
 		}
 		return check;
 	}
+	
+public String getNome(int mat) {
+		
+		String nome = "";	
+		String sql = "SELECT nome FROM escola WHERE matricula = ?";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setInt(1, mat);
+			
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				nome = rs.getString("nome");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nome;
+		
+	}
 }

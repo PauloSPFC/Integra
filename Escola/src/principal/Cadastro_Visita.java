@@ -61,7 +61,7 @@ public class Cadastro_Visita extends JFrame {
 	private int cod_visita;
 	private JTextField Inp_professor;
 	private String professor;
-	private String escola;
+	private int escola;
 	private int nro_alunos;
 	private String data_visita;
 	private String hora_visita;
@@ -219,7 +219,7 @@ public class Cadastro_Visita extends JFrame {
 		Inp_nroalunos.setOpaque(false);
 		Inp_nroalunos.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_nroalunos.setBorder(null);
-		Inp_nroalunos.setBounds(20, 446, 430, 29);
+		Inp_nroalunos.setBounds(31, 430, 412, 29);
 		Container_principal.add(Inp_nroalunos);
 		Inp_nroalunos.setColumns(10);
 		
@@ -228,25 +228,25 @@ public class Cadastro_Visita extends JFrame {
 		Inp_horario.setOpaque(false);
 		Inp_horario.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_horario.setBorder(null);
-		Inp_horario.setBounds(490, 334, 430, 29);
+		Inp_horario.setBounds(512, 327, 430, 29);
 		Container_principal.add(Inp_horario);
 		Inp_horario.setColumns(10);
 		
-		JTextField Inp_nome = new JTextField();
-		Inp_nome.setForeground(Color.WHITE);
-		Inp_nome.setOpaque(false);
-		Inp_nome.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_nome.setBorder(null);
-		Inp_nome.setBounds(21, 334, 429, 29);
-		Container_principal.add(Inp_nome);
-		Inp_nome.setColumns(10);
+		JTextField Inp_escola = new JTextField();
+		Inp_escola.setForeground(Color.WHITE);
+		Inp_escola.setOpaque(false);
+		Inp_escola.setFont(new Font("Century Gothic", Font.PLAIN, 20));
+		Inp_escola.setBorder(null);
+		Inp_escola.setBounds(31, 326, 412, 29);
+		Container_principal.add(Inp_escola);
+		Inp_escola.setColumns(10);
 		
 		JTextField Inp_data = new JTextField();
 		Inp_data.setForeground(Color.WHITE);
 		Inp_data.setOpaque(false);
 		Inp_data.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_data.setBorder(null);
-		Inp_data.setBounds(490, 216, 430, 29);
+		Inp_data.setBounds(512, 214, 430, 29);
 		Container_principal.add(Inp_data);
 		Inp_data.setColumns(10);
 		
@@ -255,7 +255,7 @@ public class Cadastro_Visita extends JFrame {
 		Inp_professor.setForeground(Color.WHITE);
 		Inp_professor.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_professor.setBorder(null);
-		Inp_professor.setBounds(20, 216, 430, 29);
+		Inp_professor.setBounds(31, 214, 412, 29);
 		Container_principal.add(Inp_professor);
 		Inp_professor.setColumns(10);
 		
@@ -264,13 +264,82 @@ public class Cadastro_Visita extends JFrame {
 		Fundo.setBounds(10, 18, 1000, 598);
 		Container_principal.add(Fundo);
 		
+		JLabel T3 = new JLabel("New label");
+		T3.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				trajeto = 3;
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
+		});
+		T3.setBounds(835, 460, 90, 80);
+		Container_principal.add(T3);
+		
+		JLabel T2 = new JLabel("New label");
+		T2.setBounds(677, 460, 84, 86);
+		Container_principal.add(T2);
+		T2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				trajeto = 2;
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
+		});
+		
+		JLabel T1 = new JLabel("New label");
+		T1.setBounds(512, 460, 90, 86);
+		Container_principal.add(T1);
+		T1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				trajeto = 1;
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+			}
+		});
+		
 		JLabel btn_agendar = new JLabel("New label");
 		btn_agendar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				nro_alunos = Integer.parseInt(Inp_nroalunos.getText());
 				professor = Inp_professor.getText();
-				escola = Inp_nome.getText();									
+				escola = Integer.parseInt(Inp_escola.getText());									
 				data_visita = Inp_data.getText();
 				hora_visita = Inp_horario.getText();	
 				VisitaDAO vd = new VisitaDAO();			
@@ -279,9 +348,11 @@ public class Cadastro_Visita extends JFrame {
 				String nome_monitor = "";
 				
 				//GERA MONITOR
-				if (vd.checkVisita(data_visita, hora_visita) == false) {
+				if (vd.checkVisita(trajeto,data_visita, hora_visita) == false) {
 					monitor = md.geraMonitor();
 					nome_monitor = md.getNome(monitor);					
+				} else {
+					cadastra = false;
 				}
 				
 				//GERA CODIGO
@@ -345,80 +416,9 @@ public class Cadastro_Visita extends JFrame {
 			}
 		});
 		
-		btn_agendar.setBounds(86, 503, 309, 86);
-		Container_principal.add(btn_agendar);
-		
-		JLabel T3 = new JLabel("New label");
-		T3.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				trajeto = 3;
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
-		T3.setBounds(796, 450, 71, 73);
-		Container_principal.add(T3);
-		
-		JLabel T2 = new JLabel("New label");
-		T2.setBounds(674, 450, 71, 73);
-		Container_principal.add(T2);
-		T2.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				trajeto = 2;
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
-		
-		JLabel T1 = new JLabel("New label");
-		T1.setBounds(550, 450, 71, 73);
-		Container_principal.add(T1);
-		T1.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				trajeto = 1;
-			}
-			
-			@Override
-			public void mouseEntered(MouseEvent arg0) {
-				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
-		
-		
-				
+		btn_agendar.setBounds(89, 496, 309, 86);
+		Container_principal.add(btn_agendar);						
+						
 	}
 
 }

@@ -54,6 +54,8 @@ public class Login_Escola extends JFrame {
 
 	private JPanel contentPane;
 	
+	P_Escola envia;
+	
 	int xx;
 	int xy;
 	private JTextField inp_nome;
@@ -282,10 +284,11 @@ public class Login_Escola extends JFrame {
 				if (escola.checkLogin(nome, matricula)) {
 					dispose();
 					P_Escola p = new P_Escola();
+					p.recebeMatricula(Integer.parseInt(matricula));
 					p.setUndecorated(true);
 					p.setVisible(true);
 					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-					p.nome_escola = nome;
+					System.out.println(matricula);
 				} else {
 					dispose();
 					Er_Login er = new Er_Login();

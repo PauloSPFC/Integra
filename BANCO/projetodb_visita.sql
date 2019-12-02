@@ -25,15 +25,19 @@ DROP TABLE IF EXISTS `visita`;
 CREATE TABLE `visita` (
   `cod_visita` int(11) NOT NULL,
   `monitor` varchar(25) DEFAULT NULL,
-  `professor` varchar(25) DEFAULT NULL,
+  `professor` varchar(50) DEFAULT NULL,
   `cod_trajeto` int(11) DEFAULT NULL,
   `data_visita` date DEFAULT NULL,
   `horario_visita` time DEFAULT NULL,
   `nro_alunos` int(11) DEFAULT NULL,
-  `nome_escola` varchar(50) DEFAULT NULL,
+  `escola` int(11) DEFAULT NULL,
   PRIMARY KEY (`cod_visita`),
   KEY `monitor` (`monitor`),
-  CONSTRAINT `visita_ibfk_1` FOREIGN KEY (`monitor`) REFERENCES `monitor` (`cpf`)
+  KEY `visita_ibfk_2` (`professor`),
+  KEY `visita_ibfk_3` (`escola`),
+  CONSTRAINT `visita_ibfk_1` FOREIGN KEY (`monitor`) REFERENCES `monitor` (`cpf`),
+  CONSTRAINT `visita_ibfk_2` FOREIGN KEY (`professor`) REFERENCES `professor` (`cpf`),
+  CONSTRAINT `visita_ibfk_3` FOREIGN KEY (`escola`) REFERENCES `escola` (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -43,7 +47,7 @@ CREATE TABLE `visita` (
 
 LOCK TABLES `visita` WRITE;
 /*!40000 ALTER TABLE `visita` DISABLE KEYS */;
-INSERT INTO `visita` VALUES (1796,'16208700884','La',3,'1596-12-20','01:12:54',8,NULL),(2088,'16208700884','K',0,'2017-05-09','02:01:03',8,NULL),(2475,'49090451803','N',1,'2014-05-20','01:30:25',4,NULL),(3416,'16208700884','JUNGOBADO',1,'2012-05-20','09:00:00',4,NULL),(3447,'16208700884','K',1,'2015-03-20','14:02:32',7,NULL),(3588,'49090451803','N',3,'2011-04-20','02:00:00',5,NULL),(3657,'16208700884','Edmilson',3,'2019-02-20','01:30:02',7,NULL),(4025,'16208700884','M',1,'2015-02-15','01:02:03',8,NULL),(4089,'49090451803','Lanus',1,'2015-04-02','21:30:22',21,'La'),(5346,'16208700884','ASDRUBAL',1,'2014-05-08','04:30:25',8,NULL),(6288,'16208700884','Nabuco',1,'2011-12-05','01:03:25',8,'Alvaro Guião'),(7567,'49090451803','B',1,'2015-08-20','20:00:00',4,NULL),(7952,'16208700884','João',1,'2019-03-25','10:30:20',8,NULL),(8978,'49090451803','Kaio',1,'2015-02-04','01:02:35',7,'Militão'),(9162,'16208700884','Juadabado',3,'2013-04-20','03:00:00',5,NULL),(9409,'49090451803','N',0,'2001-02-13','01:02:03',5,NULL),(9464,'49090451803','Nabuco',3,'2006-12-30','02:30:00',5,NULL);
+INSERT INTO `visita` VALUES (1361,'49090451803','7894561237',3,'2019-06-25','12:17:32',27,6707),(2036,'16208700884','55555555555',1,'2019-01-15','21:30:00',59,6707),(6213,'16208700884','7894561237',2,'2019-12-20','11:25:00',24,6707);
 /*!40000 ALTER TABLE `visita` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +60,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25  1:06:42
+-- Dump completed on 2019-12-02  1:02:55

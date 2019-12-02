@@ -63,7 +63,7 @@ public class Cadastro_Monitor extends JFrame {
 	private String cidade;
 	private String tel;
 	private String estado;
-	private boolean cadastra = false;
+	private boolean cadastra = true;
 	/**
 	 * Launch the application.
 	 */

@@ -15,7 +15,7 @@ public class VisitaDAO {
 	}
 	
 	public void inserir(Visita t) {
-		String sql = "INSERT INTO Visita(monitor,professor,cod_trajeto,data_visita,horario_visita,nro_alunos,cod_visita,nome_escola) VALUES (?, ?, ?, ?, ?,?,?,?);";
+		String sql = "INSERT INTO Visita(monitor,professor,cod_trajeto,data_visita,horario_visita,nro_alunos,cod_visita,escola) VALUES (?, ?, ?, ?, ?,?,?,?);";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setString(1, t.getMonitor());
@@ -25,7 +25,7 @@ public class VisitaDAO {
 			stmt.setString(5, t.getHorario_visita());
 			stmt.setInt(6, t.getNro_alunos());
 			stmt.setInt(7, t.getCod_visita());
-			stmt.setString(8, t.getNome_escola());
+			stmt.setInt(8, t.getEscola());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -33,13 +33,13 @@ public class VisitaDAO {
 		}
 	}
 	
-	public ArrayList<Visita> getLista(String nome) {
+	public ArrayList<Visita> getLista(int matricula) {
 		ArrayList<Visita> visitas = new ArrayList<>();
-		String sql = "SELECT * FROM Visita WHERE nome_escola = ?";
+		String sql = "SELECT * FROM Visita WHERE escola = ?";
 		PreparedStatement stmt;
 		try {						
 			stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setString(1, nome);
+			stmt.setInt(1, matricula);
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
 				Visita visita = new Visita();
@@ -50,7 +50,7 @@ public class VisitaDAO {
 				visita.setHorario_visita(rs.getString("horario_visita"));
 				visita.setNro_alunos(rs.getInt("nro_alunos"));
 				visita.setCod_visita(rs.getInt("cod_visita"));
-				visita.setNome_escola(rs.getString("nome_escola"));
+				visita.setEscola(rs.getInt("escola"));
 				visitas.add(visita);				
 			}
 			rs.close();
@@ -74,7 +74,7 @@ public class VisitaDAO {
 	}
 	
 	public void alterar(Visita visita) {
-		String sql = "UPDATE Visita SET monitor = ?,professor = ?, cod_trajeto= ?,data_visita = ?, horario_visita = ?, nro_alunos = ?, nome_escola = ? WHERE cod_visita = ?";
+		String sql = "UPDATE Visita SET monitor = ?,professor = ?, cod_trajeto= ?,data_visita = ?, horario_visita = ?, nro_alunos = ?, escola = ? WHERE cod_visita = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setInt(1, visita.getCod_visita());
@@ -84,7 +84,7 @@ public class VisitaDAO {
 			stmt.setString(5, visita.getData_visita());
 			stmt.setString(6, visita.getHorario_visita());
 			stmt.setInt(7, visita.getNro_alunos());
-			stmt.setString(8, visita.getNome_escola());
+			stmt.setInt(8, visita.getEscola());
 	
 			stmt.execute();
 			stmt.close();
@@ -115,14 +115,15 @@ public class VisitaDAO {
 		return check;
 	}
 	
-	public boolean checkVisita (String data, String hora) {	
+	public boolean checkVisita (int trajeto, String data, String hora) {	
 		boolean check = false;
-		String sql = "SELECT * FROM visita v WHERE v.data_visita = ? and v.horario_visita = ?";
+		String sql = "SELECT * FROM visita v WHERE v.cod_trajeto = ? and v.data_visita = ? and v.horario_visita = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-
-			stmt.setString(1, data);
-			stmt.setString(2, hora);
+			
+			stmt.setInt(1, trajeto);
+			stmt.setString(2, data);
+			stmt.setString(3, hora);
 
 			ResultSet rs = stmt.executeQuery();
 

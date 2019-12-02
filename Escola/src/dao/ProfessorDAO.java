@@ -124,4 +124,27 @@ public class ProfessorDAO {
 		return check;
 	}
 	
+public String getNome(String cpf) {
+		
+		String nome = "";	
+		String sql = "SELECT nome FROM professor WHERE cpf = ?";
+
+		try {
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+
+			stmt.setString(1, cpf);
+			
+			ResultSet rs = stmt.executeQuery();
+
+			if (rs.next()) {
+				nome = rs.getString("nome");
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return nome;
+		
+	}
+	
 	}

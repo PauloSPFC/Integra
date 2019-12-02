@@ -5,7 +5,7 @@ package bean;
  *
  */
 public class Visita {
-	private String nome_escola;
+	private int escola;
 	private int cod_visita;
 	private String monitor;
 	private String professor;
@@ -18,8 +18,8 @@ public class Visita {
 		
 	}
 	
-	public Visita(String nome_escola,int cod_visita, String monitor, String professor, int cod_trajeto, String data_visita, String horario_visita, int nro_alunos) {
-		this.nome_escola = nome_escola;
+	public Visita(int escola,int cod_visita, String monitor, String professor, int cod_trajeto, String data_visita, String horario_visita, int nro_alunos) {
+		this.escola = escola;
 		this.cod_visita = cod_visita;
 		this.monitor = monitor;
 		this.professor = professor;
@@ -85,17 +85,17 @@ public class Visita {
 		this.cod_visita = cod_visita;
 	}
 
-	public String getNome_escola() {
-		return nome_escola;
+	public int getEscola() {
+		return escola;
 	}
 
-	public void setNome_escola(String nome_escola) {
-		this.nome_escola = nome_escola;
+	public void setEscola(int escola) {
+		this.escola = escola;
 	}
 
 	@Override
 	public String toString() {
-		return "Visita [nome_escola=" + nome_escola + ", cod_visita=" + cod_visita + ", monitor=" + monitor
+		return "Visita [escola=" + escola + ", cod_visita=" + cod_visita + ", monitor=" + monitor
 				+ ", professor=" + professor + ", cod_trajeto=" + cod_trajeto + ", data_visita=" + data_visita
 				+ ", horario_visita=" + horario_visita + ", nro_alunos=" + nro_alunos + "]";
 	}

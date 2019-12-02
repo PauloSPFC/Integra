@@ -23,11 +23,13 @@ DROP TABLE IF EXISTS `professor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `professor` (
-  `cpf` int(11) NOT NULL,
+  `cpf` varchar(50) NOT NULL,
   `nome` varchar(50) DEFAULT NULL,
   `matricula_escola` int(11) DEFAULT NULL,
-  `telefone` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`cpf`)
+  `tel` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`cpf`),
+  KEY `matricula_escola` (`matricula_escola`),
+  CONSTRAINT `professor_ibfk_1` FOREIGN KEY (`matricula_escola`) REFERENCES `escola` (`matricula`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,6 +39,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
+INSERT INTO `professor` VALUES ('55555555555','Andre',6707,'33562410'),('7894561237','Juarez',6707,'33510120');
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-11-25  1:06:40
+-- Dump completed on 2019-12-02  1:02:54

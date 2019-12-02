@@ -27,6 +27,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
 
+import bean.Visita;
 import dao.VisitaDAO;
 
 import javax.swing.border.EtchedBorder;
@@ -47,7 +48,8 @@ public class P_Escola extends JFrame {
 
 	private JPanel contentPane;
 	
-	String nome_escola;
+	Visitas envia;
+	int matricula;
 	int xx;
 	int xy;
 	/**
@@ -71,8 +73,15 @@ public class P_Escola extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	public void recebeMatricula(int mat) {
+		matricula = mat;
+	}
+	
+	
 	public P_Escola() {
 		
+		int mat_passa = matricula;
+				
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);	
 		setBackground(Color.WHITE);
@@ -185,6 +194,7 @@ public class P_Escola extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
+		
 		JLabel btn_agenda = new JLabel("");
 		btn_agenda.setBounds(699, 253, 214, 212);
 		Container_principal.add(btn_agenda);
@@ -195,8 +205,19 @@ public class P_Escola extends JFrame {
 		btn_visitas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				VisitaDAO vd = new VisitaDAO();
-				System.out.println(vd.getLista(nome_escola));
+				dispose();
+				Visitas vs = new Visitas();
+				vs.setUndecorated(true);
+				vs.setVisible(true);
+				vs.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+			}
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));			
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
@@ -269,22 +290,6 @@ public class P_Escola extends JFrame {
 			}
 		});
 		
-		
-		btn_visitas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-							
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));			
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
-		
 		btn_cadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -305,4 +310,5 @@ public class P_Escola extends JFrame {
 		});
 		
 	}
+
 }
