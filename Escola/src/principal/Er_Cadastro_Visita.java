@@ -190,7 +190,7 @@ public class Er_Cadastro_Visita extends JFrame {
 			}
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-					Cadastro_Visita c = new Cadastro_Visita();
+					P_Escola c = new P_Escola();
 					c.setUndecorated(true);
 					c.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();

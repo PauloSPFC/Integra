@@ -110,14 +110,12 @@ public class Sucesso_Cadastro_Visita extends JFrame {
 					pe.setUndecorated(true);
 					pe.setVisible(true);
 					pe.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-					escola = false;
 				} else if (professor == true) {
 					dispose();
 					P_Professor pp = new P_Professor();
 					pp.setUndecorated(true);
 					pp.setVisible(true);
 					pp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-					professor= false;
 				}
 			}			
 			@Override

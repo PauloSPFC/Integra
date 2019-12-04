@@ -372,7 +372,12 @@ public class Cadastro_Visita extends JFrame {
 					erc.setUndecorated(true);
 					erc.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
 					dispose();
-					erc.setVisible(true);		
+					erc.setVisible(true);
+					if (esc == true) {
+						erc.escola = true;
+					} else if (profe == true) {
+						erc.professor = true;
+					}
 				} else {
 					monitor = md.geraMonitor();
 					nome_monitor = md.getNome(monitor);	
