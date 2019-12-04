@@ -26,10 +26,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
-
-import bean.Visita;
-import dao.VisitaDAO;
-
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
 import java.awt.event.WindowAdapter;
@@ -44,12 +40,10 @@ import javax.swing.border.BevelBorder;
 import javax.swing.border.MatteBorder;
 import java.awt.Window.Type;
 
-public class P_Escola extends JFrame {
+public class Config_Professor extends JFrame {
 
 	private JPanel contentPane;
 	
-	Visitas_e envia;
-	int matricula;
 	int xx;
 	int xy;
 	/**
@@ -59,7 +53,7 @@ public class P_Escola extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					P_Escola frame = new P_Escola();
+					Config_Professor frame = new Config_Professor();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
@@ -73,10 +67,8 @@ public class P_Escola extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-
-	
-	public P_Escola() {
-				
+	public Config_Professor() {
+		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);	
 		setBackground(Color.WHITE);
@@ -102,24 +94,24 @@ public class P_Escola extends JFrame {
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
 		contentPane.add(Btn_minimize);
-		Btn_minimize.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Btn_fechar = new JLabel("");
-		Btn_fechar.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
 		Btn_fechar.setForeground(new Color(241, 57, 83));
 		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
@@ -132,32 +124,44 @@ public class P_Escola extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_fechar.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				Btn_fechar.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_fechar.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				Btn_fechar.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
-		JLabel Favicon = new JLabel("");
-		Favicon.setBounds(13, 1, 18, 24);
-		contentPane.add(Favicon);
-		Favicon.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Logo/fav.png")));
-		Favicon.addMouseListener(new MouseAdapter() {
+		JLabel Btn_voltar = new JLabel("");
+		Btn_voltar.setBounds(15, 1, 18, 24);
+		contentPane.add(Btn_voltar);
+		Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
+		Btn_voltar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				dispose();
+				P_Professor p = new P_Professor();
+				p.setUndecorated(true);
+				p.setVisible(true);
+				p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+				p.setVisible(true);
+			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Favicon.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Logo/fav_hover.png")));
+				Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar_hover.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Favicon.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Logo/fav.png")));
+				Btn_voltar.setIcon(new ImageIcon(Login_Escola.class.getResource("/Imagens/Bot\u00F5es/voltar.png")));
+				
+				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
-			
 		});
 		
 		JLabel Lbl_mousemove = new JLabel("");
@@ -178,7 +182,7 @@ public class P_Escola extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        P_Escola.this.setLocation(x - xx, y - xy);
+		        Config_Professor.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -189,83 +193,19 @@ public class P_Escola extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
-		
-		JLabel btn_agenda = new JLabel("");
-		btn_agenda.setBounds(699, 253, 214, 212);
-		Container_principal.add(btn_agenda);
-		btn_agenda.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				Consulta_Agenda c = new Consulta_Agenda();
-				c.setUndecorated(true);
-				c.setVisible(true);
-				c.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-				c.esc=true;
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));			
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
-		
-		JLabel btn_visitas = new JLabel("");
-		btn_visitas.setBounds(364, 247, 228, 227);
-		Container_principal.add(btn_visitas);
-		btn_visitas.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				Visitas_e vs = new Visitas_e();
-				vs.setUndecorated(true);
-				vs.setVisible(true);
-				vs.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));			
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
+		JLabel btn_excluir = new JLabel("");
+		btn_excluir.setBounds(535, 244, 228, 221);
+		Container_principal.add(btn_excluir);
 		
 		JLabel btn_cadastrar = new JLabel("");
-		btn_cadastrar.setBounds(37, 247, 221, 227);
+		btn_cadastrar.setBounds(203, 247, 228, 221);
 		Container_principal.add(btn_cadastrar);
 		
 		
 		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(P_Escola.class.getResource("/Imagens/Principal/p_escola.jpg")));
+		Fundo.setIcon(new ImageIcon(Config_Professor.class.getResource("/Imagens/Principal/config_escola.jpg")));
 		Fundo.setBounds(10, 18, 1000, 598);
 		Container_principal.add(Fundo);
-		
-		JLabel btn_settings = new JLabel("New label");
-		btn_settings.setBounds(846, 552, 98, 64);
-		Container_principal.add(btn_settings);
-		btn_settings.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				dispose();
-				Config_Escola ce = new Config_Escola();
-				ce.setUndecorated(true);
-				ce.setVisible(true);
-				ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-			}
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));			
-			}
-			@Override
-			public void mouseExited(MouseEvent e) {
-				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
-			}
-		});
 		
 		JLabel btn_sair = new JLabel("New label");
 		btn_sair.setBounds(0, 552, 98, 64);
@@ -289,10 +229,15 @@ public class P_Escola extends JFrame {
 			}
 		});
 		
-		btn_agenda.addMouseListener(new MouseAdapter() {
+		
+		btn_excluir.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-							
+				dispose();
+				Excl_professor ex = new Excl_professor();
+				ex.setUndecorated(true);
+				ex.setVisible(true);
+				ex.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -308,11 +253,10 @@ public class P_Escola extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				Cadastro_Visita cv = new Cadastro_Visita();
-				cv.esc = true;
-				cv.setUndecorated(true);
-				cv.setVisible(true);
-				cv.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+				Atualiza_Monitor am = new Atualiza_Monitor();
+				am.setUndecorated(true);
+				am.setVisible(true);
+				am.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -325,5 +269,4 @@ public class P_Escola extends JFrame {
 		});
 		
 	}
-
 }

@@ -27,6 +27,7 @@ CREATE TABLE `professor` (
   `nome` varchar(50) DEFAULT NULL,
   `matricula_escola` int(11) DEFAULT NULL,
   `tel` varchar(20) DEFAULT NULL,
+  `senha` int(11) DEFAULT NULL,
   PRIMARY KEY (`cpf`),
   KEY `matricula_escola` (`matricula_escola`),
   CONSTRAINT `professor_ibfk_1` FOREIGN KEY (`matricula_escola`) REFERENCES `escola` (`matricula`)
@@ -39,7 +40,7 @@ CREATE TABLE `professor` (
 
 LOCK TABLES `professor` WRITE;
 /*!40000 ALTER TABLE `professor` DISABLE KEYS */;
-INSERT INTO `professor` VALUES ('55555555555','Andre',6707,'33562410'),('7894561237','Juarez',6707,'33510120');
+INSERT INTO `professor` VALUES ('16208700884','Lira',9350,'1',7203);
 /*!40000 ALTER TABLE `professor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-02  1:02:54
+-- Dump completed on 2019-12-04  2:03:40

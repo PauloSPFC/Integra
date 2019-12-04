@@ -54,17 +54,17 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Visitas extends JFrame {
+public class Visitas_p extends JFrame {
 
 	private JPanel contentPane;
 	
-	JTextPane Matricula = new JTextPane();
 	int xx;
 	int xy;
 	int mat;
 	boolean cadastra = true;
 	int click_count = 0;
 	int click_count2 = 1;
+	int click_count3;
 	
 	MonitorDAO md = new MonitorDAO();
 	ProfessorDAO pd = new ProfessorDAO();
@@ -76,7 +76,7 @@ public class Visitas extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Visitas frame = new Visitas();
+					Visitas_p frame = new Visitas_p();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
@@ -90,7 +90,7 @@ public class Visitas extends JFrame {
 	/**
 	 * Create the frame.
 	 */	
-	public Visitas() {	
+	public Visitas_p() {	
 				
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);	
@@ -117,24 +117,24 @@ public class Visitas extends JFrame {
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
 		contentPane.add(Btn_minimize);
-		Btn_minimize.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Btn_fechar = new JLabel("");
-		Btn_fechar.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
 		Btn_fechar.setForeground(new Color(241, 57, 83));
 		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
@@ -147,13 +147,13 @@ public class Visitas extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_fechar.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				Btn_fechar.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_fechar.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				Btn_fechar.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -167,11 +167,11 @@ public class Visitas extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				P_Escola pe = new P_Escola();
-				pe.setUndecorated(true);
-				pe.setVisible(true);
-				pe.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
-				pe.setVisible(true);
+				P_Professor pp = new P_Professor();
+				pp.setUndecorated(true);
+				pp.setVisible(true);
+				pp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+				pp.setVisible(true);
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -205,7 +205,7 @@ public class Visitas extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Visitas.this.setLocation(x - xx, y - xy);
+		        Visitas_p.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -216,19 +216,25 @@ public class Visitas extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 	
-		JTextField Inp_matricula = new JTextField();
-		Inp_matricula.setOpaque(false);
-		Inp_matricula.setForeground(Color.WHITE);
-		Inp_matricula.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_matricula.setBorder(null);
-		Inp_matricula.setBounds(276, 312, 430, 29);
-		Container_principal.add(Inp_matricula);
-		Inp_matricula.setColumns(10);
+		JTextField Inp_senha = new JTextField();
+		Inp_senha.setOpaque(false);
+		Inp_senha.setForeground(Color.WHITE);
+		Inp_senha.setFont(new Font("Century Gothic", Font.PLAIN, 20));
+		Inp_senha.setBorder(null);
+		Inp_senha.setBounds(276, 312, 430, 29);
+		Container_principal.add(Inp_senha);
+		Inp_senha.setColumns(10);
 		
 		JLabel btn_prox = new JLabel("");
 		btn_prox.setVisible(false);
-		btn_prox.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Principal/btn_prox.png")));
-		btn_prox.setBounds(736, 528, 309, 95);
+		
+		JLabel btn_ant = new JLabel("");
+		btn_ant.setVisible(false);
+		btn_ant.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Principal/btn_ant.png")));
+		btn_ant.setBounds(23, 560, 192, 48);
+		Container_principal.add(btn_ant);
+		btn_prox.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Principal/btn_prox.png")));
+		btn_prox.setBounds(736, 536, 309, 95);
 		Container_principal.add(btn_prox);
 		
 		JLabel btn_consultar = new JLabel("");	
@@ -238,23 +244,25 @@ public class Visitas extends JFrame {
 		//MOSTRA VISITAS
 		
 		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Principal/confirm_cons.jpg")));
+		Fundo.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Principal/confirm_cons_p.jpg")));
 		Fundo.setBounds(10, 18, 1000, 598);
 		Container_principal.add(Fundo);		
 		
 		btn_consultar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				int matricula = Integer.parseInt(Inp_matricula.getText());		
-				EscolaDAO ed = new EscolaDAO(); 		
+				btn_consultar.setVisible(false);
+				String senha = Inp_senha.getText();
+				EscolaDAO ed = new EscolaDAO();
+				ProfessorDAO pd = new ProfessorDAO(); 		
 				
-				if (ed.checkMatricula(matricula) == false) {	
+				if (pd.checkCpf(senha) == false) {	
 					cadastra = false;			
 				}
 				
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
-					erl.c_escola = true;
+					erl.p_professor = true;
 					erl.setUndecorated(true);
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();
@@ -265,7 +273,7 @@ public class Visitas extends JFrame {
 				else {
 					Fundo.setVisible(false);
 					
-					Inp_matricula.setVisible(false);					
+					Inp_senha.setVisible(false);					
 					Btn_voltar.setVisible(false);
 					Btn_fechar.setVisible(false);
 					Btn_minimize.setVisible(false);
@@ -275,22 +283,17 @@ public class Visitas extends JFrame {
 					
 					VisitaDAO vd = new VisitaDAO();
 					
-					
-					//for (int i = 0; i < vd.getLista(matricula).size(); i++) {
-						
-					//}
-					
 					JTextPane cod = new JTextPane();
 					cod.setOpaque(false);
 					cod.setEditable(false);
 					cod.setForeground(Color.WHITE);
 					cod.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
-					cod.setBounds(85, 207, 219, 48);
+					cod.setBounds(85, 217, 219, 48);
 					Container_principal.add(cod);
 					
 					JTextPane monitor = new JTextPane();
 					monitor.setOpaque(false);
-					monitor.setBounds(85, 352, 433, 48);
+					monitor.setBounds(85, 362, 433, 48);
 					Container_principal.add(monitor);
 					monitor.setForeground(Color.WHITE);
 					monitor.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
@@ -301,7 +304,7 @@ public class Visitas extends JFrame {
 					professor.setForeground(Color.WHITE);
 					professor.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					professor.setEditable(false);
-					professor.setBounds(108, 512, 410, 48);
+					professor.setBounds(108, 522, 410, 48);
 					Container_principal.add(professor);
 					
 					JTextPane escola = new JTextPane();
@@ -309,7 +312,7 @@ public class Visitas extends JFrame {
 					escola.setForeground(Color.WHITE);
 					escola.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					escola.setEditable(false);
-					escola.setBounds(637, 210, 343, 48);
+					escola.setBounds(637, 220, 343, 48);
 					Container_principal.add(escola);
 					
 					JTextPane alunos = new JTextPane();
@@ -317,7 +320,7 @@ public class Visitas extends JFrame {
 					alunos.setForeground(Color.WHITE);
 					alunos.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
 					alunos.setEditable(false);
-					alunos.setBounds(624, 352, 356, 48);
+					alunos.setBounds(624, 362, 356, 48);
 					Container_principal.add(alunos);
 					
 					JTextPane hora = new JTextPane();
@@ -325,7 +328,7 @@ public class Visitas extends JFrame {
 					hora.setForeground(Color.WHITE);
 					hora.setFont(new Font("Panton Black Caps", Font.PLAIN, 22));
 					hora.setEditable(false);
-					hora.setBounds(793, 488, 133, 39);
+					hora.setBounds(793, 498, 133, 39);
 					Container_principal.add(hora);
 					
 					JTextPane data = new JTextPane();
@@ -333,61 +336,156 @@ public class Visitas extends JFrame {
 					data.setForeground(Color.WHITE);
 					data.setFont(new Font("Panton Black Caps", Font.PLAIN, 22));
 					data.setEditable(false);
-					data.setBounds(609, 488, 133, 39);
+					data.setBounds(609, 498, 133, 39);
 					Container_principal.add(data);
 					
 					JTextPane trajeto = new JTextPane();
 					trajeto.setOpaque(false);
 					trajeto.setFont(new Font("Panton Black Caps", Font.PLAIN, 38));
-					trajeto.setBounds(327, 207, 38, 48);
+					trajeto.setBounds(327, 217, 38, 48);
 					Container_principal.add(trajeto);
 					
-					String nome_escola = ed.getNome(matricula);
-					int codigo = vd.getLista(matricula).get(0).getCod_visita();
-					int traj = vd.getLista(matricula).get(0).getCod_trajeto();
-					String mon = md.getNome(vd.getLista(matricula).get(0).getMonitor());
-					String prof = pd.getNome(vd.getLista(matricula).get(0).getProfessor());
-					String dat = vd.getLista(matricula).get(0).getData_visita();
-					String hr = vd.getLista(matricula).get(0).getHorario_visita();
-					int aln = vd.getLista(matricula).get(0).getNro_alunos();
+					int tamanho = vd.getListaP(senha).size();
 					
-					escola.setText(nome_escola);
-					cod.setText(Integer.toString(codigo));
-					trajeto.setText(Integer.toString(traj));
-					alunos.setText(Integer.toString(aln));
-					monitor.setText(mon);
-					professor.setText(prof);
-					data.setText(dat);
-					hora.setText(hr);
+					if (tamanho == 0) {
+						JLabel Fundo2 = new JLabel("");
+						Fundo2.setIcon(new ImageIcon(Visitas_m.class.getResource("/Imagens/Principal/nada.jpg")));
+						Fundo2.setBounds(10, 18, 1000, 598);
+						Container_principal.add(Fundo2);
+					} else {
+						String nome_escola = ed.getNome(vd.getListaP(senha).get(0).getEscola());
+						int codigo = vd.getListaP(senha).get(0).getCod_visita();
+						int traj = vd.getListaP(senha).get(0).getCod_trajeto();
+						String mon = md.getNome(vd.getListaP(senha).get(0).getMonitor());
+						String prof = pd.getNome(vd.getListaP(senha).get(0).getProfessor());
+						String dat = vd.getListaP(senha).get(0).getData_visita();
+						String hr = vd.getListaP(senha).get(0).getHorario_visita();
+						int aln = vd.getListaP(senha).get(0).getNro_alunos();
+						
+						escola.setText(nome_escola);
+						cod.setText(Integer.toString(codigo));
+						trajeto.setText(Integer.toString(traj));
+						alunos.setText(Integer.toString(aln));
+						monitor.setText(mon);
+						professor.setText(prof);
+						data.setText(dat);
+						hora.setText(hr);										
 					
-					
-					
-					int tamanho = vd.getLista(matricula).size();
-					
-					if(vd.getLista(matricula).size() > 1) {
-						btn_prox.setVisible(true);
+						
+						if(vd.getListaP(senha).size() > 1) {
+							btn_prox.setVisible(true);
+						}
+						
+						btn_prox.addMouseListener(new MouseAdapter() {
+							
+							@Override
+							public void mouseEntered(MouseEvent arg0) {
+								setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+							}
+							@Override
+							public void mouseExited(MouseEvent e) {
+								setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+							}
+							
+							@Override
+							public void mouseClicked(MouseEvent arg0) {	
+								
+								click_count3++;
+								
+								click_count++;
+								click_count2++;
+								
+								if (click_count >= 1 && click_count < tamanho) {
+									btn_ant.setVisible(true);
+								}
+								
+								if (click_count == 0) {
+									btn_ant.setVisible(false);
+								}
+								
+								if (click_count2 <= tamanho) {
+									btn_prox.setVisible(true);
+								}
+								
+								if (click_count2 == tamanho) {
+									btn_prox.setVisible(false);
+								}
+								
+								if (click_count < tamanho) {
+									String nome_escola = ed.getNome(vd.getListaP(senha).get(0).getEscola());
+									int codigo = vd.getListaP(senha).get(click_count3).getCod_visita();
+									int traj = vd.getListaP(senha).get(click_count3).getCod_trajeto();
+									String mon = md.getNome(vd.getListaP(senha).get(click_count3).getMonitor());
+									String prof = pd.getNome(vd.getListaP(senha).get(click_count3).getProfessor());
+									String dat = vd.getListaP(senha).get(click_count3).getData_visita();
+									String hr = vd.getListaP(senha).get(click_count3).getHorario_visita();
+									int aln = vd.getListaP(senha).get(click_count3).getNro_alunos();
+									
+									escola.setText(nome_escola);
+									cod.setText(Integer.toString(codigo));
+									trajeto.setText(Integer.toString(traj));
+									alunos.setText(Integer.toString(aln));
+									monitor.setText(mon);
+									professor.setText(prof);
+									data.setText(dat);
+									hora.setText(hr);
+																	
+								}							
+								
+							}
+						
+						});
 					}
 					
-					btn_prox.addMouseListener(new MouseAdapter() {
+					
+					
+					
+					btn_ant.addMouseListener(new MouseAdapter() {
+						
 						@Override
-						public void mouseClicked(MouseEvent arg0) {	
+						public void mouseEntered(MouseEvent arg0) {
+							setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
+						}
+						@Override
+						public void mouseExited(MouseEvent e) {
+							setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
+						}
+						
+						@Override
+						public void mouseClicked(MouseEvent arg0) {
 							
-							click_count++;
-							click_count2++;
+							click_count3--;
+							click_count2--;	
+							
+							if (click_count2 <= tamanho) {
+								btn_prox.setVisible(true);
+							}
 							
 							if (click_count2 == tamanho) {
 								btn_prox.setVisible(false);
 							}
 							
+							if (click_count > 1 && click_count < tamanho) {
+								btn_ant.setVisible(true);
+							}
+							
+							if (click_count == 1) {
+								btn_ant.setVisible(false);
+							}
+										
+							
 							if (click_count < tamanho) {
-								int codigo = vd.getLista(matricula).get(click_count).getCod_visita();
-								int traj = vd.getLista(matricula).get(click_count).getCod_trajeto();
-								String mon = md.getNome(vd.getLista(matricula).get(click_count).getMonitor());
-								String prof = pd.getNome(vd.getLista(matricula).get(click_count).getProfessor());
-								String dat = vd.getLista(matricula).get(click_count).getData_visita();
-								String hr = vd.getLista(matricula).get(click_count).getHorario_visita();
-								int aln = vd.getLista(matricula).get(click_count).getNro_alunos();
 								
+								String nome_escola = ed.getNome(vd.getListaP(senha).get(0).getEscola());
+								int codigo = vd.getListaP(senha).get(click_count3).getCod_visita();
+								int traj = vd.getListaP(senha).get(click_count3).getCod_trajeto();
+								String mon = md.getNome(vd.getListaP(senha).get(click_count3).getMonitor());
+								String prof = pd.getNome(vd.getListaP(senha).get(click_count3).getProfessor());
+								String dat = vd.getListaP(senha).get(click_count3).getData_visita();
+								String hr = vd.getListaP(senha).get(click_count3).getHorario_visita();
+								int aln = vd.getListaP(senha).get(click_count3).getNro_alunos();
+								
+								escola.setText(nome_escola);
 								cod.setText(Integer.toString(codigo));
 								trajeto.setText(Integer.toString(traj));
 								alunos.setText(Integer.toString(aln));
@@ -397,12 +495,14 @@ public class Visitas extends JFrame {
 								hora.setText(hr);
 																
 							}
+							
+							click_count--;
 						}
 					
-					});																					
+					});
 					
 					JLabel Fundo2 = new JLabel("");
-					Fundo2.setIcon(new ImageIcon(Visitas.class.getResource("/Imagens/Principal/visitas.jpg")));
+					Fundo2.setIcon(new ImageIcon(Visitas_p.class.getResource("/Imagens/Principal/visitas.jpg")));
 					Fundo2.setBounds(10, 18, 1000, 598);
 					Container_principal.add(Fundo2);
 				}
@@ -420,7 +520,4 @@ public class Visitas extends JFrame {
 		});
 				
 	}
-	
-	
-	
 }

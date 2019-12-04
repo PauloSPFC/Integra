@@ -28,6 +28,7 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
 
 import dao.EscolaDAO;
+import dao.ProfessorDAO;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
@@ -276,12 +277,15 @@ public class Login_Professor extends JFrame {
 		Btn_Entrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				String nome = inp_cpf.getText();
-				String matricula = inp_senha.getText();
-				EscolaDAO escola = new EscolaDAO();
-				System.out.println(escola.checkLogin(nome, matricula));
-				if (escola.checkLogin(nome, matricula)) {
-					Btn_minimize.setVisible(false);
+				String cpf = inp_cpf.getText();
+				String senha = inp_senha.getText();
+				ProfessorDAO professor = new ProfessorDAO();
+				if (professor.checkLogin(cpf, senha)) {
+					dispose();
+					P_Professor pp = new P_Professor();
+					pp.setUndecorated(true);
+					pp.setVisible(true);
+					pp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 				} else {
 					dispose();
 					Er_Login er = new Er_Login();

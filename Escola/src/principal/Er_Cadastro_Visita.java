@@ -50,7 +50,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Er_Cadastro extends JFrame {
+public class Er_Cadastro_Visita extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -67,7 +67,7 @@ public class Er_Cadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Er_Cadastro frame = new Er_Cadastro();
+					Er_Cadastro_Visita frame = new Er_Cadastro_Visita();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
@@ -81,7 +81,7 @@ public class Er_Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Er_Cadastro() {
+	public Er_Cadastro_Visita() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 		setBackground(Color.WHITE);
@@ -107,17 +107,17 @@ public class Er_Cadastro extends JFrame {
 		Btn_minimize.setBorderPainted(false);
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
-		Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -167,7 +167,7 @@ public class Er_Cadastro extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Er_Cadastro.this.setLocation(x - xx, y - xy);
+		        Er_Cadastro_Visita.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -184,41 +184,17 @@ public class Er_Cadastro extends JFrame {
 		Btn_tent.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_tent.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_tent_hover.png")));
+				Btn_tent.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/btn_tent_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				if (escola == true) {
-					Cadastro_Escola ce = new Cadastro_Escola();
-					ce.setUndecorated(true);
-					ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
-					dispose();
-					ce.setVisible(true);
-					escola = false;
-				} else if (professor == true) {
-					Login_Professor p = new Login_Professor();
-					p.setUndecorated(true);
-					p.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
-					dispose();
-					p.setVisible(true);
-					professor = false;
-				} else if (monitor == true) {
-					Login_Monitor m = new Login_Monitor();
-					m.setUndecorated(true);
-					m.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
-					dispose();
-					m.setVisible(true);
-					monitor = false;
-				} else if (c_visita == true) {
 					Cadastro_Visita c = new Cadastro_Visita();
 					c.setUndecorated(true);
-					c.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
+					c.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();
 					c.setVisible(true);
-					c_visita = false;
-				}
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
@@ -227,18 +203,18 @@ public class Er_Cadastro extends JFrame {
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		Btn_tent.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Bot\u00F5es/btn_tent.png")));
+		Btn_tent.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/btn_tent.png")));
 		
 		
 		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Cenas/fundoer_cad.png")));
+		Fundo.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Cenas/fundoer_visita.png")));
 		Fundo.setBounds(10, 22, 379, 379);
 		Container_principal.add(Fundo);
 		
 		JLabel Astronauta = new JLabel("");
 		Astronauta.setBackground(null);
 		Astronauta.setBounds(10, 48, 379, 258);
-		Astronauta.setIcon(new ImageIcon(Er_Cadastro.class.getResource("/Imagens/Cenas/cavae.gif")));
+		Astronauta.setIcon(new ImageIcon(Er_Cadastro_Visita.class.getResource("/Imagens/Cenas/cavae.gif")));
 		Container_principal.add(Astronauta);
 	}
 }

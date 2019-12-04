@@ -74,17 +74,17 @@ public class MonitorDAO {
 	}
 
 	public void alterar (Monitor monitor) {
-		String sql = "UPDATE Monitor SET nome = ?, tel= ?, rua = ?, nro = ?, bairro = ?, cidade = ? WHERE cpf = ?";
+		String sql = "UPDATE Monitor SET nome = ?, tel= ?, rua = ?, nro = ?, bairro = ?, cidade = ?, senha = ? WHERE cpf = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
-			stmt.setString(1, monitor.getCpf());
-			stmt.setString(2, monitor.getNome());
-			stmt.setString(4, monitor.getTel());
-			stmt.setString(5, monitor.getRua());
-			stmt.setString(6, monitor.getNro());
-			stmt.setString(7, monitor.getBairro());
-			stmt.setString(8, monitor.getCidade());
-			stmt.setInt(9, monitor.getSenha());
+			stmt.setString(1, monitor.getNome());
+			stmt.setString(2, monitor.getTel());
+			stmt.setString(3, monitor.getRua());
+			stmt.setString(4, monitor.getNro());
+			stmt.setString(5, monitor.getBairro());
+			stmt.setString(6, monitor.getCidade());			
+			stmt.setInt(7, monitor.getSenha());
+			stmt.setString(8, monitor.getCpf());
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -134,7 +134,7 @@ public class MonitorDAO {
 		
 	}
 	
-public String getNome(String cpf) {
+	public String getNome(String cpf) {
 		
 		String nome = "";	
 		String sql = "SELECT nome FROM monitor WHERE cpf = ?";
@@ -200,5 +200,17 @@ public String getNome(String cpf) {
 			e.printStackTrace();
 		}
 		return check;
+	}
+	
+	public void removerMatricula(String matricula) {
+		try {
+			String sql = "DELETE FROM monitor where cpf = ?";
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, matricula);			
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }

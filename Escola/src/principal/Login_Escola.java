@@ -284,7 +284,6 @@ public class Login_Escola extends JFrame {
 				if (escola.checkLogin(nome, matricula)) {
 					dispose();
 					P_Escola p = new P_Escola();
-					p.recebeMatricula(Integer.parseInt(matricula));
 					p.setUndecorated(true);
 					p.setVisible(true);
 					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));

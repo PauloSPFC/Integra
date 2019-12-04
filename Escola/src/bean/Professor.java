@@ -1,6 +1,7 @@
 package bean;
 
 public class Professor {
+	private int senha;
 	private String cpf;
 	private String nome;
 	private int matricula_escola;
@@ -10,8 +11,9 @@ public class Professor {
 		
 	}
 	
-	public Professor(String cpf, String nome, int matricula_escola, String tel) {
+	public Professor(int senha,String cpf, String nome, int matricula_escola, String tel) {
 		super();
+		this.senha = senha;
 		this.cpf = cpf;
 		this.nome = nome;
 		this.matricula_escola = matricula_escola;
@@ -23,6 +25,14 @@ public class Professor {
 		return cpf;
 	}
 
+
+	public int getSenha() {
+		return senha;
+	}
+
+	public void setSenha(int senha) {
+		this.senha = senha;
+	}
 
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
@@ -58,11 +68,10 @@ public class Professor {
 		this.tel = tel;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Professor [cpf=" + cpf + ", nome=" + nome + ", matricula_escola=" + matricula_escola + ", tel=" + tel
-				+ "]";
+		return "Professor [senha=" + senha + ", cpf=" + cpf + ", nome=" + nome + ", matricula_escola="
+				+ matricula_escola + ", tel=" + tel + "]";
 	}
 
 	public void add(Professor professor) {

@@ -270,9 +270,11 @@ public class Cadastro_Professor extends JFrame {
 
 				//Check Matricula
 				EscolaDAO ed = new EscolaDAO();
-				if (ed.checkMatricula(Integer.parseInt(teste_mat))) {
-					cadastra = true;
+				if (ed.checkMatricula(Integer.parseInt(teste_mat)) == false) {
+					cadastra = false;					
+				} else {
 					matricula = Integer.parseInt(teste_mat);
+					cadastra = true;
 				}
 				
 				
@@ -289,7 +291,7 @@ public class Cadastro_Professor extends JFrame {
 				//
 
 
-				Professor p = new Professor(cpf,nome,matricula,tel);
+				Professor p = new Professor(senha,cpf,nome,matricula,tel);
 
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
@@ -298,7 +300,6 @@ public class Cadastro_Professor extends JFrame {
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();
 					erl.setVisible(true);
-					erl.c_professor = false;
 				}
 
 

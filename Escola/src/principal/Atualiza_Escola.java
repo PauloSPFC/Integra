@@ -301,12 +301,16 @@ public class Atualiza_Escola extends JFrame {
 				    	nro = teste_nro;
 				    }
 				}
+				
+				if (ed.checkMatricula(matricula) == false) {
+					cadastra = false;
+				}
 
 				Escola e = new Escola(matricula,nome,rua,nro,bairro,cidade,tel,estado);
 				
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
-					erl.c_escola = true;
+					erl.a_escola = true;
 					erl.setUndecorated(true);
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();

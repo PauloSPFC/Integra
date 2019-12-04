@@ -62,6 +62,12 @@ public class Er_Login extends JFrame {
 	boolean c_escola = false;
 	boolean c_monitor = false;
 	boolean c_professor = false;
+	boolean p_escola = false;
+	boolean p_professor = false;
+	boolean p_monitor = false;
+	boolean a_monitor = false;
+	boolean a_professor = false;
+	boolean a_escola = false;
 	/**
 	 * Launch the application.
 	 */
@@ -164,21 +170,21 @@ public class Er_Login extends JFrame {
 					ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();
 					ce.setVisible(true);
-					escola = false;
+					c_escola = false;
 				} else if (c_professor == true) {
 					Cadastro_Professor cp = new Cadastro_Professor();
 					cp.setUndecorated(true);
 					cp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();
 					cp.setVisible(true);
-					professor = false;
+					c_professor = false;
 				} else if (c_monitor == true) {
 					Cadastro_Monitor cm = new Cadastro_Monitor();
 					cm.setUndecorated(true);
 					cm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					dispose();
 					cm.setVisible(true);
-					monitor = false;
+					c_monitor = false;
 				}
 				else if (escola == true) {
 					Login_Escola l = new Login_Escola();
@@ -201,6 +207,53 @@ public class Er_Login extends JFrame {
 					dispose();
 					m.setVisible(true);
 					monitor = false;
+				} else if (p_escola == true) {
+					dispose();
+					P_Escola pe = new P_Escola();
+					pe.setUndecorated(true);
+					pe.setVisible(true);
+					pe.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					p_escola = false;
+				}
+				else if (p_professor == true) {
+					dispose();
+					P_Professor pp = new P_Professor();
+					pp.setUndecorated(true);
+					pp.setVisible(true);
+					pp.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					p_professor = false;
+				}
+				else if (p_monitor == true) {
+					dispose();
+					P_Monitor pm = new P_Monitor();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					p_monitor = false;
+				}
+				else if (a_monitor == true) {
+					dispose();
+					Atualiza_Monitor pm = new Atualiza_Monitor();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					a_monitor = false;
+				}
+				else if (a_professor == true) {
+					dispose();
+					Atualiza_Professor pm = new Atualiza_Professor();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					a_professor = false;
+				}
+				else if (a_escola == true) {
+					dispose();
+					Atualiza_Escola pm = new Atualiza_Escola();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					a_escola = false;
 				}
 			}
 			@Override

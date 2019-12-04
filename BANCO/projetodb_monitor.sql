@@ -41,7 +41,7 @@ CREATE TABLE `monitor` (
 
 LOCK TABLES `monitor` WRITE;
 /*!40000 ALTER TABLE `monitor` DISABLE KEYS */;
-INSERT INTO `monitor` VALUES ('12345678910','NEVER','34199747','200','Jockey','São Carlos','Nove','1341'),('16208700884','Julia','1','1','1','1','1',NULL),('49090451803','Paulo','33510120','2541','Jockey Club','São Carlos','Rio Negro',NULL);
+INSERT INTO `monitor` VALUES ('33333333333','Atlas','2','2','2','2','Nada','8454'),('49090451803','Janio','1','1','1','1','a','4568'),('99999999999','Kala','69854123','145','Jockey','São Carlos','Lara','5602');
 /*!40000 ALTER TABLE `monitor` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-02  1:02:56
+-- Dump completed on 2019-12-04  2:03:42

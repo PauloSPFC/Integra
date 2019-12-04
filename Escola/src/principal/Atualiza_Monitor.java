@@ -29,11 +29,9 @@ import java.awt.event.MouseMotionAdapter;
 import javax.swing.border.TitledBorder;
 
 import bean.Escola;
-import bean.Visita;
+import bean.Monitor;
 import dao.EscolaDAO;
 import dao.MonitorDAO;
-import dao.ProfessorDAO;
-import dao.VisitaDAO;
 
 import javax.swing.border.EtchedBorder;
 import javax.swing.JTextPane;
@@ -53,15 +51,24 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Excl_escola extends JFrame {
+public class Atualiza_Monitor extends JFrame {
 
 	private JPanel contentPane;
 	
 	int xx;
 	int xy;
-	private int matricula;
-	private JTextField Inp_matricula;
+	private JTextField Inp_nome;
+	public int matricula;
+	private String nome;
+	private String rua;
+	private String nro;
+	private String bairro;
+	private String cidade;
+	private String tel;
+	private String estado;
 	private boolean cadastra = true;
+	private JTextField Inp_matricula;
+	private JTextField Inp_rua;
 	/**
 	 * Launch the application.
 	 */
@@ -69,7 +76,7 @@ public class Excl_escola extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Excl_escola frame = new Excl_escola();
+					Atualiza_Monitor frame = new Atualiza_Monitor();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
@@ -83,7 +90,7 @@ public class Excl_escola extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Excl_escola() {
+	public Atualiza_Monitor() {
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);	
@@ -110,24 +117,24 @@ public class Excl_escola extends JFrame {
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
 		contentPane.add(Btn_minimize);
-		Btn_minimize.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Btn_fechar = new JLabel("");
-		Btn_fechar.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
 		Btn_fechar.setForeground(new Color(241, 57, 83));
 		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
@@ -140,13 +147,13 @@ public class Excl_escola extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_fechar.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				Btn_fechar.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_fechar.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				Btn_fechar.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -160,11 +167,10 @@ public class Excl_escola extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				dispose();
-				Config_Escola ce = new Config_Escola();
+				Config_Monitor ce = new Config_Monitor();
 				ce.setUndecorated(true);
 				ce.setVisible(true);
-				ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
-				ce.setVisible(true);
+				ce.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -198,7 +204,7 @@ public class Excl_escola extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Excl_escola.this.setLocation(x - xx, y - xy);
+		        Atualiza_Monitor.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -210,69 +216,146 @@ public class Excl_escola extends JFrame {
 		Container_principal.setLayout(null);
 		
 		Inp_matricula = new JTextField();
-		Inp_matricula.setOpaque(false);
-		Inp_matricula.setForeground(Color.WHITE);
-		Inp_matricula.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_matricula.setBorder(null);
-		Inp_matricula.setBounds(276, 312, 430, 29);
+		Inp_matricula.setBounds(297, 489, 167, 29);
 		Container_principal.add(Inp_matricula);
+		Inp_matricula.setFont(new Font("Century Gothic", Font.PLAIN, 16));
 		Inp_matricula.setColumns(10);
+		Inp_matricula.setBorder(null);
 		
-		JLabel btn_excluir = new JLabel("");
-		btn_excluir.addMouseListener(new MouseAdapter() {
+		JTextField Inp_telefone = new JTextField();
+		Inp_telefone.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_telefone.setBorder(null);
+		Inp_telefone.setBounds(34, 489, 183, 29);
+		Container_principal.add(Inp_telefone);
+		Inp_telefone.setColumns(10);
+		
+		JTextField Inp_cidade = new JTextField();
+		Inp_cidade.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_cidade.setBorder(null);
+		Inp_cidade.setBounds(34, 426, 183, 29);
+		Container_principal.add(Inp_cidade);
+		Inp_cidade.setColumns(10);
+		
+		JTextField Inp_estado = new JTextField();
+		Inp_estado.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_estado.setBorder(null);
+		Inp_estado.setBounds(297, 426, 167, 29);
+		Container_principal.add(Inp_estado);
+		Inp_estado.setColumns(10);
+		
+		JTextField Inp_bairro = new JTextField();
+		Inp_bairro.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_bairro.setBorder(null);
+		Inp_bairro.setBounds(297, 358, 167, 29);
+		Container_principal.add(Inp_bairro);
+		Inp_bairro.setColumns(10);
+		
+		JTextField Inp_nro = new JTextField();
+		Inp_nro.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_nro.setBorder(null);
+		Inp_nro.setBounds(36, 358, 112, 29);
+		Container_principal.add(Inp_nro);
+		Inp_nro.setColumns(10);
+		
+		JTextField Inp_cpf = new JTextField();
+		Inp_cpf.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_cpf.setBorder(null);
+		Inp_cpf.setBounds(36, 229, 430, 29);
+		Container_principal.add(Inp_cpf);
+		Inp_cpf.setColumns(10);
+		
+		Inp_rua = new JTextField();
+		Inp_rua.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_rua.setColumns(10);
+		Inp_rua.setBorder(null);
+		Inp_rua.setBounds(36, 293, 430, 29);
+		Container_principal.add(Inp_rua);
+		
+		Inp_nome = new JTextField();
+		Inp_nome.setForeground(Color.BLACK);
+		Inp_nome.setFont(new Font("Century Gothic", Font.PLAIN, 16));
+		Inp_nome.setBorder(null);
+		Inp_nome.setBounds(36, 164, 430, 29);
+		Container_principal.add(Inp_nome);
+		Inp_nome.setColumns(10);
+		
+		JLabel Btn_cad = new JLabel("");
+		Btn_cad.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Bot\u00F5es/btn_att.png")));
+		Btn_cad.setBounds(88, 538, 320, 76);
+		Container_principal.add(Btn_cad);
+		Btn_cad.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				matricula = Integer.parseInt(Inp_matricula.getText());		
-				EscolaDAO ed = new EscolaDAO(); 		
+				String cpf = Inp_cpf.getText();
+				nome = Inp_nome.getText();
+				rua = Inp_rua.getText();
+				String teste_nro = Inp_nro.getText();									
+				bairro = Inp_bairro.getText();
+				cidade = Inp_cidade.getText();
+				tel = Inp_telefone.getText();
+				estado = Inp_estado.getText();
+				matricula = Integer.parseInt(Inp_matricula.getText());
+				MonitorDAO md = new MonitorDAO();
 				
-				if (ed.checkMatricula(matricula) == false) {	
-					cadastra = false;			
+				//Validações
+								
+				//Verifica Numero
+				
+				char[] n = teste_nro.toCharArray();
+
+				for ( int i = 0; i < n.length; i++ ) {
+				    // verifica se o char não é um dígito
+				    if ( !Character.isDigit( n[ i ] ) ) {
+				        cadastra = false;
+				        break;
+				    } else {
+				    	nro = teste_nro;
+				    }
+				}
+
+				Monitor m = new Monitor(matricula,cpf,nome,tel,rua,nro,bairro,cidade);
+				
+				if (md.checkCadastro(cpf) == false) {
+					cadastra = false;
 				}
 				
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
-					erl.c_escola = true;
+					erl.a_monitor = true;
 					erl.setUndecorated(true);
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();
 					erl.setVisible(true);
 				}
 				
-				
 				else {
-					VisitaDAO vd = new VisitaDAO();
-					vd.removerEscola(matricula);
-					ProfessorDAO pd = new ProfessorDAO();
-					pd.removerEscola(matricula);
-					ed.removerMatricula(matricula);
+					Login_Monitor le = new Login_Monitor();
+					le.setUndecorated(true);
+					le.setShape(new RoundRectangle2D.Double(0, 0, 379, 591, 15, 15));
 					dispose();
-					Acesso a = new Acesso();
-					a.setUndecorated(true);
-					a.setVisible(true);
-					a.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					le.setVisible(true);
+					md.alterar(m);
 				}
+				
 			}
-			
 			@Override
-			public void mouseEntered(MouseEvent arg0) {	
+			public void mouseEntered(MouseEvent arg0) {
+				Btn_cad.setIcon(new ImageIcon(Cadastro_Monitor.class.getResource("/Imagens/Bot\u00F5es/btn_att_hover.png")));
+				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
+				Btn_cad.setIcon(new ImageIcon(Cadastro_Monitor.class.getResource("/Imagens/Bot\u00F5es/btn_att.png")));
+				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
-		btn_excluir.setBounds(348, 439, 309, 95);
-		Container_principal.add(btn_excluir);
-		
 		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(Excl_escola.class.getResource("/Imagens/Principal/Excl_e.jpg")));
+		Fundo.setIcon(new ImageIcon(Atualiza_Monitor.class.getResource("/Imagens/Principal/atualiza_monitor.jpg")));
 		Fundo.setBounds(10, 18, 1000, 598);
 		Container_principal.add(Fundo);
 		
-		
-				
 	}
-
 }

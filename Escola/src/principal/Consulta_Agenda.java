@@ -52,24 +52,20 @@ import java.awt.event.FocusEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Cadastro_Visita extends JFrame {
+public class Consulta_Agenda extends JFrame {
 
 	private JPanel contentPane;
-	
+	JLabel Fundo = new JLabel();
 	int xx;
 	int xy;
 	boolean esc = false;
 	boolean profe = false;
-	private int cod_visita;
-	private JTextField Inp_professor;
-	private String professor;
-	private int escola;
+	boolean monit = false;
 	private int nro_alunos;
 	private String data_visita;
 	private String hora_visita;
 	private int trajeto;
 	private boolean cadastra = true;
-	boolean cadastra2 = true;
 	/**
 	 * Launch the application.
 	 */
@@ -77,7 +73,7 @@ public class Cadastro_Visita extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cadastro_Visita frame = new Cadastro_Visita();
+					Consulta_Agenda frame = new Consulta_Agenda();
 					frame.setUndecorated(true);
 					frame.setVisible(true);
 					frame.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
@@ -91,7 +87,7 @@ public class Cadastro_Visita extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro_Visita() {
+	public Consulta_Agenda() {
 		
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);	
@@ -118,24 +114,24 @@ public class Cadastro_Visita extends JFrame {
 		Btn_minimize.setFocusPainted(false);
 		Btn_minimize.setContentAreaFilled(false);
 		contentPane.add(Btn_minimize);
-		Btn_minimize.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+		Btn_minimize.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 		Btn_minimize.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_minimize.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
+				Btn_minimize.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/minimize_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_minimize.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
+				Btn_minimize.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/minimize.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel Btn_fechar = new JLabel("");
-		Btn_fechar.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+		Btn_fechar.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 		Btn_fechar.setHorizontalAlignment(SwingConstants.CENTER);
 		Btn_fechar.setForeground(new Color(241, 57, 83));
 		Btn_fechar.setFont(new Font("Montserrat ExtraBold", Btn_fechar.getFont().getStyle(), 14));
@@ -148,13 +144,13 @@ public class Cadastro_Visita extends JFrame {
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				Btn_fechar.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
+				Btn_fechar.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				Btn_fechar.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
+				Btn_fechar.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
@@ -167,12 +163,32 @@ public class Cadastro_Visita extends JFrame {
 		Btn_voltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				dispose();
-				P_Escola p = new P_Escola();
-				p.setUndecorated(true);
-				p.setVisible(true);
-				p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
-				p.setVisible(true);
+				if (esc == true) {
+					dispose();
+					P_Escola p = new P_Escola();
+					p.setUndecorated(true);
+					p.setVisible(true);
+					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+					p.setVisible(true);
+					esc = false;
+				} else if (profe == true) {
+					dispose();
+					P_Professor p = new P_Professor();
+					p.setUndecorated(true);
+					p.setVisible(true);
+					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+					p.setVisible(true);
+					profe = false;
+				} else if (monit == true) {
+					dispose();
+					P_Monitor m = new P_Monitor();
+					m.setUndecorated(true);
+					m.setVisible(true);
+					m.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+					m.setVisible(true);
+					monit = false;
+				}
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
@@ -206,7 +222,7 @@ public class Cadastro_Visita extends JFrame {
 				int x = e.getXOnScreen();
 		        int y = e.getYOnScreen();
 		        
-		        Cadastro_Visita.this.setLocation(x - xx, y - xy);
+		        Consulta_Agenda.this.setLocation(x - xx, y - xy);
 			}
 		});
 		
@@ -217,53 +233,25 @@ public class Cadastro_Visita extends JFrame {
 		contentPane.add(Container_principal);
 		Container_principal.setLayout(null);
 		
-		JTextField Inp_nroalunos = new JTextField();
-		Inp_nroalunos.setForeground(Color.WHITE);
-		Inp_nroalunos.setOpaque(false);
-		Inp_nroalunos.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_nroalunos.setBorder(null);
-		Inp_nroalunos.setBounds(31, 430, 412, 29);
-		Container_principal.add(Inp_nroalunos);
-		Inp_nroalunos.setColumns(10);
-		
 		JTextField Inp_horario = new JTextField();
 		Inp_horario.setForeground(Color.WHITE);
 		Inp_horario.setOpaque(false);
 		Inp_horario.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_horario.setBorder(null);
-		Inp_horario.setBounds(512, 327, 430, 29);
+		Inp_horario.setBounds(495, 214, 412, 29);
 		Container_principal.add(Inp_horario);
 		Inp_horario.setColumns(10);
-		
-		JTextField Inp_escola = new JTextField();
-		Inp_escola.setForeground(Color.WHITE);
-		Inp_escola.setOpaque(false);
-		Inp_escola.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_escola.setBorder(null);
-		Inp_escola.setBounds(31, 326, 412, 29);
-		Container_principal.add(Inp_escola);
-		Inp_escola.setColumns(10);
 		
 		JTextField Inp_data = new JTextField();
 		Inp_data.setForeground(Color.WHITE);
 		Inp_data.setOpaque(false);
 		Inp_data.setFont(new Font("Century Gothic", Font.PLAIN, 20));
 		Inp_data.setBorder(null);
-		Inp_data.setBounds(512, 214, 430, 29);
+		Inp_data.setBounds(41, 214, 412, 29);
 		Container_principal.add(Inp_data);
 		Inp_data.setColumns(10);
 		
-		Inp_professor = new JTextField();
-		Inp_professor.setOpaque(false);
-		Inp_professor.setForeground(Color.WHITE);
-		Inp_professor.setFont(new Font("Century Gothic", Font.PLAIN, 20));
-		Inp_professor.setBorder(null);
-		Inp_professor.setBounds(31, 214, 412, 29);
-		Container_principal.add(Inp_professor);
-		Inp_professor.setColumns(10);
-		
-		JLabel Fundo = new JLabel("");
-		Fundo.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Principal/cad_vis.jpg")));
+		Fundo.setIcon(new ImageIcon(Consulta_Agenda.class.getResource("/Imagens/Principal/consulta_agenda.jpg")));
 		Fundo.setBounds(10, 18, 1000, 598);
 		Container_principal.add(Fundo);
 		
@@ -276,22 +264,20 @@ public class Cadastro_Visita extends JFrame {
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				T3.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
-		T3.setBounds(835, 460, 90, 80);
+		T3.setBounds(604, 377, 90, 80);
 		Container_principal.add(T3);
 		
 		JLabel T2 = new JLabel("New label");
-		T2.setBounds(677, 460, 84, 86);
+		T2.setBounds(447, 374, 84, 86);
 		Container_principal.add(T2);
 		T2.addMouseListener(new MouseAdapter() {
 			@Override
@@ -301,20 +287,18 @@ public class Cadastro_Visita extends JFrame {
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				T2.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
 		JLabel T1 = new JLabel("New label");
-		T1.setBounds(512, 460, 90, 86);
+		T1.setBounds(288, 374, 90, 86);
 		Container_principal.add(T1);
 		T1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -324,25 +308,20 @@ public class Cadastro_Visita extends JFrame {
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				T1.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
+			
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
-		JLabel btn_agendar = new JLabel("New label");
-		btn_agendar.addMouseListener(new MouseAdapter() {
+		JLabel btn_consultar = new JLabel();
+		btn_consultar.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				nro_alunos = Integer.parseInt(Inp_nroalunos.getText());
-				professor = Inp_professor.getText();
-				escola = Integer.parseInt(Inp_escola.getText());									
+			public void mouseClicked(MouseEvent arg0) {									
 				data_visita = Inp_data.getText();
 				hora_visita = Inp_horario.getText();	
 				VisitaDAO vd = new VisitaDAO();			
@@ -350,79 +329,70 @@ public class Cadastro_Visita extends JFrame {
 				String monitor = "";
 				String nome_monitor = "";
 				
-				System.out.println(trajeto);
-				System.out.println(data_visita);
-				System.out.println(hora_visita);
-				
 				//GERA MONITOR
-				if (vd.checkVisita(trajeto,data_visita, hora_visita)) {
-					Er_Cadastro_Visita erc = new Er_Cadastro_Visita();
-					erc.c_visita = true;
-					erc.setUndecorated(true);
-					erc.setShape(new RoundRectangle2D.Double(0, 0, 379, 280, 15, 15));
-					dispose();
-					erc.setVisible(true);		
+				if (vd.checkVisita(trajeto,data_visita, hora_visita) == false) {
+					Fundo.setVisible(false);
+					
+					Btn_minimize.setVisible(false);
+					Btn_fechar.setVisible(false);
+					Btn_voltar.setVisible(false);
+					
+					Btn_minimize.setVisible(true);
+					Btn_fechar.setVisible(true);
+					Btn_voltar.setVisible(true);
+					
+					T1.setVisible(false);
+					T2.setVisible(false);
+					T3.setVisible(false);
+					
+					Inp_data.setVisible(false);
+					Inp_horario.setVisible(false);
+					
+					JLabel Fundo2 = new JLabel("");
+					Fundo2.setIcon(new ImageIcon(Visitas_m.class.getResource("/Imagens/Principal/nada.jpg")));
+					Fundo2.setBounds(10, 18, 1000, 598);					
+					Container_principal.add(Fundo2);
 				} else {
-					monitor = md.geraMonitor();
-					nome_monitor = md.getNome(monitor);	
+					Fundo.setVisible(false);
 					
-					//GERA CODIGO
-					Random rnd = new Random();
-					cod_visita = 1000 + rnd.nextInt(10000 - 1000);			
+					Btn_minimize.setVisible(false);
+					Btn_fechar.setVisible(false);
+					Btn_voltar.setVisible(false);
 					
-					while (vd.checkCodigo(cod_visita) == true) {
-						cod_visita = 1000 + rnd.nextInt(10000 - 1000);
-						System.out.println(cod_visita);
-						break;
-					}		
-									
-					//
+					Btn_minimize.setVisible(true);
+					Btn_fechar.setVisible(true);
+					Btn_voltar.setVisible(true);
 					
-					if (cadastra == false) {
-						Er_Login erl = new Er_Login();
-						erl.c_escola = true;
-						erl.setUndecorated(true);
-						erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
-						dispose();
-						erl.setVisible(true);
-					}
+					T1.setVisible(false);
+					T2.setVisible(false);
+					T3.setVisible(false);
 					
-					 else {
-						Visita v = new Visita(escola,cod_visita,monitor,professor,trajeto,data_visita,hora_visita,nro_alunos);
-						Sucesso_Cadastro_Visita suc = new Sucesso_Cadastro_Visita();
-						if (esc == true) {
-							suc.escola = true;
-						} else if (profe == true) {
-							suc.professor = true;
-						}
-						suc.setUndecorated(true);
-						suc.setShape(new RoundRectangle2D.Double(0, 0, 379, 400, 15, 15));
-						dispose();
-						suc.Matricula.setFont(new Font("Big John PRO Bold", Font.PLAIN, 25));
-						suc.Matricula.setText("\nCódigo da visita: " + cod_visita + "\nNome do monitor: " + nome_monitor);
-						suc.setVisible(true);
-						vd.inserir(v);
-					}
-				}			
+					Inp_data.setVisible(false);
+					Inp_horario.setVisible(false);
+					
+					JLabel Fundo3 = new JLabel("");
+					Fundo3.setIcon(new ImageIcon(Visitas_m.class.getResource("/Imagens/Principal/achou_visita.jpg")));
+					Fundo3.setBounds(10, 18, 1000, 598);					
+					Container_principal.add(Fundo3);
+					
+				}
 				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent arg0) {
-				btn_agendar.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close_hover.png")));
 				
 				setCursor( Cursor.getPredefinedCursor( Cursor.HAND_CURSOR));
 			}
 			@Override
 			public void mouseExited(MouseEvent e) {
-				btn_agendar.setIcon(new ImageIcon(Cadastro_Visita.class.getResource("/Imagens/Bot\u00F5es/close.png")));
-				
+
 				setCursor( Cursor.getPredefinedCursor( Cursor.DEFAULT_CURSOR));
 			}
 		});
 		
-		btn_agendar.setBounds(89, 496, 309, 86);
-		Container_principal.add(btn_agendar);						
+		btn_consultar.setBounds(336, 498, 309, 86);
+		Container_principal.add(btn_consultar);						
 						
 	}
 

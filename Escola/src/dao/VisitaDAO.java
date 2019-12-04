@@ -61,11 +61,103 @@ public class VisitaDAO {
 		return visitas;
 	}
 	
+	public ArrayList<Visita> getListaP(String cpf) {
+		ArrayList<Visita> visitas = new ArrayList<>();
+		String sql = "SELECT * FROM Visita WHERE professor = ?";
+		PreparedStatement stmt;
+		try {						
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Visita visita = new Visita();
+				visita.setMonitor(rs.getString("monitor"));
+				visita.setProfessor(rs.getString("professor"));
+				visita.setCod_trajeto(rs.getInt("cod_trajeto"));
+				visita.setData_visita(rs.getString("data_visita"));
+				visita.setHorario_visita(rs.getString("horario_visita"));
+				visita.setNro_alunos(rs.getInt("nro_alunos"));
+				visita.setCod_visita(rs.getInt("cod_visita"));
+				visita.setEscola(rs.getInt("escola"));
+				visitas.add(visita);				
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return visitas;
+	}
+	
+	public ArrayList<Visita> getListaM(String cpf) {
+		ArrayList<Visita> visitas = new ArrayList<>();
+		String sql = "SELECT * FROM Visita WHERE monitor = ?";
+		PreparedStatement stmt;
+		try {						
+			stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				Visita visita = new Visita();
+				visita.setMonitor(rs.getString("monitor"));
+				visita.setProfessor(rs.getString("professor"));
+				visita.setCod_trajeto(rs.getInt("cod_trajeto"));
+				visita.setData_visita(rs.getString("data_visita"));
+				visita.setHorario_visita(rs.getString("horario_visita"));
+				visita.setNro_alunos(rs.getInt("nro_alunos"));
+				visita.setCod_visita(rs.getInt("cod_visita"));
+				visita.setEscola(rs.getInt("escola"));
+				visitas.add(visita);				
+			}
+			rs.close();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return visitas;
+	}
+	
 	public void remover(Visita visita) {
 		try {
 			String sql = "DELETE FROM Visita where cod_visita = ?";
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			stmt.setLong(1, visita.getCod_visita());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removerMonitor(String cpf) {
+		try {
+			String sql = "DELETE FROM Visita where monitor = ?";
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, cpf);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removerEscola(int matricula) {
+		try {
+			String sql = "DELETE FROM Visita where escola = ?";
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setInt(1, matricula);
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removerProfessor(String cpf) {
+		try {
+			String sql = "DELETE FROM Visita where professor = ?";
+			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
+			stmt.setString(1, cpf);
 			stmt.execute();
 			stmt.close();
 		} catch (SQLException e) {
@@ -117,7 +209,7 @@ public class VisitaDAO {
 	
 	public boolean checkVisita (int trajeto, String data, String hora) {	
 		boolean check = false;
-		String sql = "SELECT * FROM visita v WHERE v.cod_trajeto = ? and v.data_visita = ? and v.horario_visita = ?";
+		String sql = "SELECT * FROM visita WHERE cod_trajeto = ? and data_visita = ? and horario_visita = ?";
 		try {
 			PreparedStatement stmt = (PreparedStatement) connection.prepareStatement(sql);
 			
