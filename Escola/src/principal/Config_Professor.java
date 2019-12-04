@@ -253,10 +253,10 @@ public class Config_Professor extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				dispose();
-				Atualiza_Monitor am = new Atualiza_Monitor();
-				am.setUndecorated(true);
-				am.setVisible(true);
-				am.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+				Atualiza_Professor ap = new Atualiza_Professor();
+				ap.setUndecorated(true);
+				ap.setVisible(true);
+				ap.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 			}
 			@Override
 			public void mouseEntered(MouseEvent e) {

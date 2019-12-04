@@ -167,12 +167,23 @@ public class Cadastro_Visita extends JFrame {
 		Btn_voltar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				dispose();
-				P_Escola p = new P_Escola();
-				p.setUndecorated(true);
-				p.setVisible(true);
-				p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
-				p.setVisible(true);
+				if (esc == true) {
+					dispose();
+					P_Escola p = new P_Escola();
+					p.setUndecorated(true);
+					p.setVisible(true);
+					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+					p.setVisible(true);
+					esc = false;
+				} else if (profe == true) {
+					P_Professor p = new P_Professor();
+					p.setUndecorated(true);
+					p.setVisible(true);
+					p.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));			
+					p.setVisible(true);
+					profe = false;
+				}
+				
 			}
 			@Override
 			public void mouseEntered(MouseEvent arg0) {

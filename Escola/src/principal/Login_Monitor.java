@@ -281,6 +281,7 @@ public class Login_Monitor extends JFrame {
 				String senha = inp_senha.getText();
 				MonitorDAO monitor = new MonitorDAO();
 				if (monitor.checkLogin(cpf, senha)) {
+					dispose();
 					P_Monitor pm = new P_Monitor();
 					pm.setUndecorated(true);
 					pm.setVisible(true);

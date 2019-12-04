@@ -333,7 +333,6 @@ public class Cadastro_Monitor extends JFrame {
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();
 					erl.setVisible(true);
-					erl.c_monitor = false;
 				}
 
 

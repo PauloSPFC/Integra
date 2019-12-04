@@ -68,6 +68,9 @@ public class Er_Login extends JFrame {
 	boolean a_monitor = false;
 	boolean a_professor = false;
 	boolean a_escola = false;
+	boolean e_escola = false;
+	boolean e_monit = false;
+	boolean e_professor = false;
 	/**
 	 * Launch the application.
 	 */
@@ -254,6 +257,27 @@ public class Er_Login extends JFrame {
 					pm.setVisible(true);
 					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
 					a_escola = false;
+				} else if (e_escola == true) {
+					dispose();
+					Excl_escola pm = new Excl_escola();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					e_escola = false;
+				} else if (e_monit == true) {
+					dispose();
+					Excl_monitor pm = new Excl_monitor();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					e_monit = false;
+				} else if (e_professor == true) {
+					dispose();
+					Excl_professor pm = new Excl_professor();
+					pm.setUndecorated(true);
+					pm.setVisible(true);
+					pm.setShape(new RoundRectangle2D.Double(0, 0, 928, 591, 15, 15));
+					e_professor = false;
 				}
 			}
 			@Override

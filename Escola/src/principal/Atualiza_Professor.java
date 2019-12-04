@@ -261,12 +261,15 @@ public class Atualiza_Professor extends JFrame {
 				tel = Inp_telefone.getText();
 				matricula = Integer.parseInt(Inp_matricula.getText());
 				ProfessorDAO pd = new ProfessorDAO();
+				EscolaDAO ed = new EscolaDAO();
 				
 				//Validações								
 
 				Professor p = new Professor(senha,cpf,nome,matricula,tel);
 				
-				if (pd.checkCpf(cpf) == false) {
+				if (pd.checkCpf(cpf)) {
+					cadastra = true;
+				} else {
 					cadastra = false;
 				}
 				

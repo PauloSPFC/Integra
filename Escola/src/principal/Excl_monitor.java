@@ -230,7 +230,7 @@ public class Excl_monitor extends JFrame {
 				
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
-					erl.c_escola = true;
+					erl.e_monit = true;
 					erl.setUndecorated(true);
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();

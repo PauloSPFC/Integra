@@ -231,7 +231,7 @@ public class Excl_professor extends JFrame {
 				
 				if (cadastra == false) {
 					Er_Login erl = new Er_Login();
-					erl.c_escola = true;
+					erl.e_professor = true;
 					erl.setUndecorated(true);
 					erl.setShape(new RoundRectangle2D.Double(0, 0, 379, 379, 15, 15));
 					dispose();
